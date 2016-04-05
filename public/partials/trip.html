@@ -1,8 +1,16 @@
 <div>
-  <h1>trip list goes here</h1>
-  <a href="/trips">trip link</a>
+  <h1>trip details go here</h1>
 </div>
-<button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Create Trip</button>
+<div>
+  <h1>calendar goes here</h1>
+</div>
+<div>
+  <h1>message board goes here</h1>
+</div>
+<div>
+  <h1>tasks go here</h1>
+</div>
+<button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Add task</button>
 <div class='form' ng-show='showme'>
  <form novalidate class='new=post' name='postData' ng-submit='addPost()'>
    <label for='title'>Title</label>

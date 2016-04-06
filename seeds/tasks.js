@@ -4,9 +4,9 @@ exports.seed = function(knex, Promise) {
     knex('tasks').del(),
 
     // Inserts seed entries
-    knex('tasks').insert({user_id: 4, trip_id: 3, description: 'book camp site', due_date: '4/15/16'}),
-    knex('tasks').insert({user_id: 4, trip_id: 3, description: 'get beer', due_date: '5/14/16' }),
-    knex('tasks').insert({user_id: 5, trip_id: 4, description: 'book cabin', due_date: '6/1/16'}),
-    knex('tasks').insert({user_id: 6, trip_id: 4, description: 'make menu', due_date: '6/30/16'})
+    knex('tasks').insert({user_id: 5, trip_id: 4, description: 'book camp site', due_date: '4/15/16'}),
+    knex('tasks').insert({user_id: 5, trip_id: 4, description: 'get beer', due_date: '5/14/16' }),
+    knex('tasks').insert({user_id: 6, trip_id: 5, description: 'book cabin', due_date: '6/1/16'}),
+    knex('tasks').insert({user_id: 6, trip_id: 5, description: 'make menu', due_date: '6/30/16'})
   );
 };

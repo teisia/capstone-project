@@ -1,22 +1,26 @@
-<div>
-  <h1>trip list goes here</h1>
-  <a href="/trips">trip link</a>
-</div>
-<button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Create Trip</button>
-<div class='form' ng-show='showme'>
- <form novalidate class='new=post' name='postData' ng-submit='addPost()'>
-   <label for='title'>Title</label>
-   <input name='title' type='text' ng-model='title' required ng-minlength=5>
-   <br>
-   <label for='author'>Author</label>
-   <input name='author' type='text' ng-model='author' required ng-minlength=2>
-   <br>
-   <label for='image'>Image URL</label>
-   <input name='image' type='url' ng-model='image' required ng-minlength=5>
-   <br>
-   <label for='description'>Description</label>
-   <textarea name='description' ng-model='description' required ng-maxlength=255></textarea>
-   <br>
-   <button class='newSubmit' ng-disabled='postData.$invalid' ng-click='showme=false'>Submit Post</button>
- </form>
+<div class="dashboard text-center">
+    <a href="/#/trips">trip link</a>
+  <h1>my trips</h1>
+  <div ng-repeat="trip in trip_collection">
+    {{trip.title}}
+  </div>
+  <br>
+  <button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Create Trip</button>
+  <div class='form' ng-show='showme'>
+   <form ng-submit="postTrip()">
+     <label for='title'>Title</label>
+     <input name='title' type='text' ng-model='trip.title' required ng-minlength=5>
+     <br>
+     <label for='description'>Description</label>
+     <input name='description' type='text' ng-model='trip.description' required ng-minlength=2>
+     <br>
+     <label for='trip_start'>Trip Start</label>
+     <input name='trip_start' type='url' ng-model='trip.trip_start' required ng-minlength=5>
+     <br>
+     <label for='trip_end'>Description</label>
+     <textarea name='trip_end' ng-model='trip.trip_end' required ng-maxlength=255></textarea>
+     <br>
+     <button class='newSubmit' ng-click='showme=false'>Submit Post</button>
+   </form>
+  </div>
 </div>

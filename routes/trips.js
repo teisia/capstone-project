@@ -1,15 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var jwt = require('jsonwebtoken');
 var knex = require('../db/knex');
-
-function createToken(user) {
-  return jwt.sign(user, process.env.TOKEN_SECRET)
-}
-
-function verifyToken(user) {
-  return jwt.verify(user, process.env.TOKEN_SECRET)
-}
 
 function trips() {
   return knex('trip');
@@ -23,9 +14,21 @@ function tasks() {
   return knex('tasks');
 };
 
-function user() {
+function User() {
   return knex('user');
 };
+
+router.get("/", function(req,res){
+ trips().select().then(function(payload){
+   res.json(payload);
+ })
+});
+
+router.get("/:id", function(req,res){
+ trips().where({id: req.params.id}).then(function(payload){
+   res.json(payload);
+ })
+});
 
 
 module.exports = router;

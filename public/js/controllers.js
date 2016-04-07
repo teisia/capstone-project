@@ -48,4 +48,8 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
       console.log(payload);
     })
 
+    TripService.deleteTrip(the_id).then(function(payload) {
+      console.log("you deleted it");
+    })
+
 }])

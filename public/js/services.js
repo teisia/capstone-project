@@ -17,9 +17,8 @@ return {
   },
 
   deleteTrip: function(trip_id) {
-    return $http.delete("/trips/"+trip_id);
+    return $http.post("/trips/"+trip_id);
   }
-
   }
 
 });

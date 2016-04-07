@@ -19,10 +19,13 @@
          <label for='trip_end'>Trip End</label>
          <input name='trip_end' type='text' ng-model='tripInfo.trip_end'>
          <input type='hidden' name="id" value="{{tripInfo.id}}">
-         <button class='newSubmit' ng-click='showmeET=false'>Submit Post</button>
+         <button class='btn button' ng-click='showmeET=false'>Submit Post</button>
+       </form>
+       <form method='post' action='/trips/delete'>
+          <input type='hidden' name="id" value="{{tripInfo.id}}">
+          <button class='btn button'>Delete</button>
        </form>
       </div>
-      <a href='/#/trips/{{singleTrip.id}}/delete'>Delete</a>
     </div>
     <div class="well">
       <h1>tasks go here</h1>

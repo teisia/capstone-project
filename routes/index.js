@@ -63,6 +63,9 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       console.log("here is my result")
       console.log(rest)
       if (rest){
+        //cookies here
+        console.log(rest.id)
+        res.cookie('user', rest.id)
         return res.send('You are now logged in!');
       }
       var user = {}
@@ -74,6 +77,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       // Knex call to create user
     User().insert(user).then(function(response){
       res.send('You have created a user baby');
+      console.log(user.id);
     })
     });
   }

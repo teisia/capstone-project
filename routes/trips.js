@@ -25,9 +25,33 @@ router.get("/", function(req,res){
 });
 
 router.get("/:id", function(req,res){
- trips().where({id: req.params.id}).then(function(payload){
+ trips().select().where({id: req.params.id}).then(function(payload){
    res.json(payload);
  })
+});
+
+router.post("/", function(req,res){
+  var obj = {}
+  obj.title = req.body.title,
+  obj.description= req.body.description,
+  obj.trip_start= req.body.trip_start,
+  obj.trip_end= req.body.trip_end
+  obj.admin_id= req.cookies.user,
+  trips().insert(obj).then(function(){
+    res.json({success: true});
+  })
+});
+
+router.post("/edit", function(req,res) {
+  trips().where("id", req.body.id).update(req.body).then(function(){
+    res.redirect('/#/trips');
+  })
+});
+
+router.post("/delete", function(req,res) {
+  trips().where("id", req.body.id).del().then(function(){
+    res.redirect('/#/trips');
+  })
 });
 
 

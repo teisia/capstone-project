@@ -1,7 +1,26 @@
 <div>
   <h1>trip details go here</h1>
-  <p>{{singleTrip.name}}</p>
+  <p>{{singleTrip.title}}</p>
   <p>{{singleTrip.description}}</p>
+  <button class='newPost' ng-click='toggleEditTripForm()'><i class='fa fa-plus'></i>Edit Trip</button>
+  <div class='form' ng-show='showmeET'>
+   <form method='post' action='/trips/edit'>
+     <label for='title'>Title</label>
+     <input name='title' type='text' ng-model='tripInfo.title'>
+     <br>
+     <label for='description'>Description</label>
+     <input name='description' type='text' ng-model='tripInfo.description'>
+     <br>
+     <label for='trip_start'>Trip Start</label>
+     <input name='trip_start' type='text' ng-model='tripInfo.trip_start'>
+     <br>
+     <label for='trip_end'>Trip End</label>
+     <input name='trip_end' type='text' ng-model='tripInfo.trip_end'>
+     <input type='hidden' name="id" value="{{tripInfo.id}}">
+     <button class='newSubmit' ng-click='showmeET=false'>Submit Post</button>
+   </form>
+  </div>
+  <a href='/#/trips/{{singleTrip.id}}/delete'>Delete</a>
 </div>
 <div>
   <h1>calendar goes here</h1>
@@ -12,20 +31,20 @@
 <div>
   <h1>tasks go here</h1>
 </div>
-<button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Add task</button>
-<div class='form' ng-show='showme'>
+<button class='newPost' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i>Add task</button>
+<div class='form' ng-show='showmeNT'>
  <form novalidate class='new=post' name='postData' ng-submit='addPost()'>
    <label for='title'>Title</label>
-   <input name='title' type='text' ng-model='title' required ng-minlength=5>
+   <input name='title' type='text' ng-model='title'>
    <br>
    <label for='author'>Author</label>
-   <input name='author' type='text' ng-model='author' required ng-minlength=2>
+   <input name='author' type='text' ng-model='author'>
    <br>
    <label for='image'>Image URL</label>
-   <input name='image' type='url' ng-model='image' required ng-minlength=5>
+   <input name='image' type='url' ng-model='image'>
    <br>
    <label for='description'>Description</label>
-   <textarea name='description' ng-model='description' required ng-maxlength=255></textarea>
+   <input name='description' type='text' ng-model='description'>
    <br>
    <button class='newSubmit' ng-disabled='postData.$invalid' ng-click='showme=false'>Submit Post</button>
  </form>

@@ -5,22 +5,29 @@
     {{trip.title}}
   </div>
   <br>
-  <button class='newPost' ng-click='togglePostForm()'><i class='fa fa-plus'></i>Create Trip</button>
+  <button class='newPost' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i>Create Trip</button>
   <div class='form' ng-show='showme'>
    <form ng-submit="postTrip()">
-     <label for='title'>Title</label>
-     <input name='title' type='text' ng-model='trip.title' required ng-minlength=5>
-     <br>
-     <label for='description'>Description</label>
-     <input name='description' type='text' ng-model='trip.description' required ng-minlength=2>
-     <br>
-     <label for='trip_start'>Trip Start</label>
-     <input name='trip_start' type='url' ng-model='trip.trip_start' required ng-minlength=5>
-     <br>
-     <label for='trip_end'>Description</label>
-     <textarea name='trip_end' ng-model='trip.trip_end' required ng-maxlength=255></textarea>
-     <br>
-     <button class='newSubmit' ng-click='showme=false'>Submit Post</button>
+     <fieldset class="form-group">
+       <label for='title'>Title</label>
+       <input name='title' type='text' ng-model='trip.title'>
+     </fieldset>
+       <br>
+     <fieldset class="form-group">
+       <label for='description'>Description</label>
+       <input name='description' type='text' ng-model='trip.description'>
+     </fieldset>
+       <br>
+     <fieldset class="form-group">
+       <label for='trip_start'>Trip Start</label>
+       <input name='trip_start' type='text' ng-model='trip.trip_start'>
+    </fieldset>
+       <br>
+    <fieldset class="form-group">
+       <label for='trip_end'>Trip End</label>
+       <input name='trip_end' type='text' ng-model='trip.trip_end'>
+    </fieldset>
+     <button class='btn' ng-click='showme=false'>Submit Post</button>
    </form>
   </div>
 </div>

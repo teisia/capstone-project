@@ -5,10 +5,17 @@ app.controller('LoginCtrl', function($scope, $auth) {
 });
 
 app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', function($scope, $http, $routeParams, TripService){
-     $scope.test='HTML and Routes Working';
 
-     $scope.togglePostForm = function () {
+     $scope.toggleNewTripForm = function () {
        $scope.showme = !$scope.showme;
+     }
+
+     $scope.toggleEditTripForm = function () {
+       $scope.showmeET = !$scope.showmeET;
+     }
+
+     $scope.toggleNewTaskForm = function () {
+       $scope.showmeNT = !$scope.showmeNT;
      }
 
     TripService.getTrips().then(function(payload){
@@ -26,5 +33,17 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
     }, function(error){
       console.log("an error occurred");
     });
+
+    $scope.trip = {};
+    $scope.postTrip = function() {
+    TripService.newTrip($scope.trip).then(function() {
+      console.log("posted trip");
+    })
+    }
+
+    TripService.editTrip(the_id).then(function(payload) {
+      $scope.tripInfo = payload.data[0];
+      console.log(payload);
+    })
 
 }])

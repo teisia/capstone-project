@@ -10,26 +10,9 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
        $scope.showme = !$scope.showme;
      }
 
-     $scope.toggleEditTripForm = function () {
-       $scope.showmeET = !$scope.showmeET;
-     }
-
-     $scope.toggleNewTaskForm = function () {
-       $scope.showmeNT = !$scope.showmeNT;
-     }
-
     TripService.getTrips().then(function(payload){
      $scope.trip_collection = payload.data;
       console.log(payload.data);
-    }, function(error){
-      console.log("an error occurred");
-    });
-
-    the_id = $routeParams.id;
-    console.log("my params are "+the_id);
-
-    TripService.getTrip(the_id).then(function(payload){
-      $scope.singleTrip = payload.data[0];
     }, function(error){
       console.log("an error occurred");
     });
@@ -40,6 +23,25 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
       console.log("posted trip");
     })
     }
+}])
+
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', function($scope, $http, $routeParams, TripService){
+
+    $scope.toggleEditTripForm = function () {
+      $scope.showmeET = !$scope.showmeET;
+    }
+
+    $scope.toggleNewTaskForm = function () {
+      $scope.showmeNT = !$scope.showmeNT;
+    }
+
+    the_id = $routeParams.id;
+
+    TripService.getTrip(the_id).then(function(payload){
+      $scope.singleTrip = payload.data[0];
+    }, function(error){
+      console.log("an error occurred");
+    });
 
     TripService.editTrip(the_id).then(function(payload) {
       $scope.tripInfo = payload.data[0];

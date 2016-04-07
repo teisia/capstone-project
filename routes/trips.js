@@ -43,14 +43,14 @@ router.post("/", function(req,res){
 });
 
 router.post("/edit", function(req,res) {
-  trips().where("id", req.body.id).update(req.body).then(function(){
-    res.redirect('/#/trips');
+  trips().where("id", req.body.id).update(req.body).then(function(result){
+    res.redirect('/#/trips/'+req.body.id+'');
   })
 });
 
 router.post("/delete", function(req,res) {
   trips().where("id", req.body.id).del().then(function(){
-    res.redirect('/#/trips');
+    res.redirect('/#/dashboard');
   })
 });
 

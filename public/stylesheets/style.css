@@ -21,6 +21,9 @@ body {
 
 .form {
   background-color: white;
+  padding: 3rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
 }
 
 .button {

@@ -22,3 +22,11 @@ return {
   }
 
 });
+
+app.factory("UserService", function($http) {
+  return {
+    getUsers: function() {
+      return $http.get("/users");
+    }
+  }
+})

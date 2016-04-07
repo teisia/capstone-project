@@ -12,7 +12,6 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
     TripService.getTrips().then(function(payload){
      $scope.trip_collection = payload.data;
-      console.log(payload.data);
     }, function(error){
       console.log("an error occurred");
     });
@@ -25,7 +24,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
     }
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', function($scope, $http, $routeParams, TripService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
 
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
@@ -51,5 +50,12 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
     TripService.deleteTrip(the_id).then(function(payload) {
       console.log("you deleted it");
     })
+
+    UserService.getUsers().then(function(payload) {
+      $scope.user_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
+
 
 }])

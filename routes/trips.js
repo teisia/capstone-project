@@ -6,10 +6,6 @@ function trips() {
   return knex('trip');
 };
 
-function tripD() {
-  return knex('trip_details');
-};
-
 function tasks() {
   return knex('tasks');
 };

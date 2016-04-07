@@ -1,40 +1,33 @@
-<div class="dashboard">
-  <div ng-repeat="user in users">
-   <img src="{{user.picture}}">
+<div class='dashboard'>
+  <div ng-repeat='user in users'>
+   <img src='{{user.picture}}'>
   </div>
-  <div class="well">
-    <h1>my trips</h1>
-    <div ng-repeat="trip in trip_collection">
+  <div class='well'>
+    <h1>My Trips</h1>
+    <div ng-repeat='trip in trip_collection'>
       {{trip.title}}
     </div>
     <br>
-    <button class='newPost' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i>Create Trip</button>
+    <button class='btn' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
     <div class='form' ng-show='showme'>
-     <form ng-submit="postTrip()">
-       <fieldset class="form-group">
-         <label for='title'>Title</label>
-         <input name='title' type='text' ng-model='trip.title'>
+     <form ng-submit='postTrip()'>
+       <fieldset class='form-group'>
+         <input class='form-control' name='title' type='text' ng-model='trip.title' placeholder='Title'>
        </fieldset>
-         <br>
-       <fieldset class="form-group">
-         <label for='description'>Description</label>
-         <input name='description' type='text' ng-model='trip.description'>
+       <fieldset class='form-group'>
+         <input class='form-control' name='description' type='text' ng-model='trip.description' placeholder='Description'>
        </fieldset>
-         <br>
-       <fieldset class="form-group">
-         <label for='trip_start'>Trip Start</label>
-         <input name='trip_start' type='text' ng-model='trip.trip_start'>
+       <fieldset class='form-group'>
+         <input class='form-control' name='trip_start' type='text' ng-model='trip.trip_start' placeholder='Trip Start Date'>
       </fieldset>
-         <br>
-      <fieldset class="form-group">
-         <label for='trip_end'>Trip End</label>
-         <input name='trip_end' type='text' ng-model='trip.trip_end'>
+      <fieldset class='form-group'>
+         <input class='form-control' name='trip_end' type='text' ng-model='trip.trip_end' placeholder='Trip End Date'>
       </fieldset>
-       <button class='btn' ng-click='showme=false'>Submit</button>
+       <button class='btn button' ng-click='showme=false'>Add Trip</button>
      </form>
     </div>
   </div>
-  <div class="well">
-    <h1>my calendar</h1>
+  <div class='well'>
+    <h1>My Calendar</h1>
   </div>
 </div>

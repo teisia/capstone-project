@@ -1,59 +1,71 @@
-<div class="tripContainer">
-  <div class="col-sm-6">
-    <div class="well">
+<div class='tripContainer'>
+  <div class='col-sm-6'>
+    <div class='well'>
       <h1>trip details go here</h1>
       <p>{{singleTrip.title}}</p>
       <p>{{singleTrip.description}}</p>
-      <button class='newPost' ng-click='toggleEditTripForm()'><i class='fa fa-plus'></i>Edit Trip</button>
+      <button class='btn' ng-click='toggleEditTripForm()'>Edit Trip</button>
       <div class='form' ng-show='showmeET'>
        <form method='post' action='/trips/edit'>
+        <fieldset class='form-group'>
          <label for='title'>Title</label>
-         <input name='title' type='text' ng-model='tripInfo.title'>
-         <br>
+         <input class='form-control' name='title' type='text' ng-model='tripInfo.title'>
+        </fieldset>
+        <fieldset class='form-group'>
          <label for='description'>Description</label>
-         <input name='description' type='text' ng-model='tripInfo.description'>
-         <br>
+         <input class='form-control' name='description' type='text' ng-model='tripInfo.description'>
+        </fieldset>
+        <fieldset class='form-group'>
          <label for='trip_start'>Trip Start</label>
-         <input name='trip_start' type='text' ng-model='tripInfo.trip_start'>
-         <br>
+         <input class='form-control' name='trip_start' type='text' ng-model='tripInfo.trip_start'>
+        </fieldset>
+        <fieldset class='form-group'>
          <label for='trip_end'>Trip End</label>
-         <input name='trip_end' type='text' ng-model='tripInfo.trip_end'>
-         <input type='hidden' name="id" value="{{tripInfo.id}}">
-         <button class='btn button' ng-click='showmeET=false'>Submit Post</button>
+         <input class='form-control' name='trip_end' type='text' ng-model='tripInfo.trip_end'>
+         <input type='hidden' name="id" value='{{tripInfo.id}}'>
+        </fieldset>
+        <fieldset class='form-group'>
+         <button class='btn button' ng-click='showmeET=false'>Update Trip</button>
+        </fieldset>
        </form>
        <form method='post' action='/trips/delete'>
-          <input type='hidden' name="id" value="{{tripInfo.id}}">
-          <button class='btn button'>Delete</button>
+          <input type='hidden' name="id" value='{{tripInfo.id}}'>
+          <button class='btn button'>Delete Trip</button>
        </form>
       </div>
     </div>
-    <div class="well">
+    <div class='well'>
       <h1>tasks go here</h1>
-      <button class='newPost' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i>Add task</button>
+      <button class='btn' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Task</button>
       <div class='form' ng-show='showmeNT'>
-       <form novalidate class='new=post' name='postData' ng-submit='addPost()'>
-         <label for='title'>Title</label>
-         <input name='title' type='text' ng-model='title'>
-         <br>
-         <label for='author'>Author</label>
-         <input name='author' type='text' ng-model='author'>
-         <br>
-         <label for='image'>Image URL</label>
-         <input name='image' type='url' ng-model='image'>
-         <br>
-         <label for='description'>Description</label>
-         <input name='description' type='text' ng-model='description'>
-         <br>
-         <button class='newSubmit' ng-disabled='postData.$invalid' ng-click='showme=false'>Submit Post</button>
+       <form method='post' action=''>
+           <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+         <fieldset class='form-group'>
+           <label for='description'>Description</label>
+           <input class='form-control' name='description' type='text' ng-model='task.description' placeholder='Task Description'>
+         </fieldset>
+         <fieldset class='form-group'>
+           <label for='due_date'>Due Date</label>
+           <input class='form-control' name='due_date' type='text' ng-model='task.due_date' placeholder='Task Due Date'>
+         </fieldset>
+         <fieldset class='form-grou'>
+           <label for='user_id'>Assign Task</label>
+           <select class='form-control'>
+            <option diasbled>Select User</option>
+            <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+           </select>
+         </fieldset>
+           <br>
+           <button class='btn button' ng-click='showme=false'>Add Task</button>
        </form>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="well">
+  <div class='col-sm-6'>
+    <div class='well'>
       <h1>calendar goes here</h1>
     </div>
-    <div class="well">
+    <div class='well'>
       <h1>message board goes here</h1>
     </div>
   </div>

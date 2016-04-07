@@ -11,6 +11,10 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
            templateUrl: 'partials/dashboard.html',
            controller: 'MainController'
          })
+       .when('/trips', {
+           templateUrl: 'partials/dashboard.html',
+           controller: 'MainController'
+       })
        .when('/trips/:id', {
            templateUrl: 'partials/trip.html',
            controller: 'SingleTripController'

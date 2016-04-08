@@ -22,7 +22,7 @@ router.get("/", function(req,res){
 
 router.get("/:id", function(req,res){
  trips().select().where({id: req.params.id}).then(function(payload){
-   res.json(payload);
+     res.json(payload);
  })
 });
 

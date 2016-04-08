@@ -11,14 +11,13 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
            templateUrl: 'partials/dashboard.html',
            controller: 'MainController'
          })
-       .when('/trips', {
-           templateUrl: 'partials/dashboard.html',
-           controller: 'MainController'
-       })
        .when('/trips/:id', {
            templateUrl: 'partials/trip.html',
            controller: 'SingleTripController'
          })
+        .otherwise({
+           redirectTo: '/dashboard'
+         });
 
    $authProvider.google({
      clientId: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com'

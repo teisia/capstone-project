@@ -24,7 +24,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
     }
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', 'TaskService', function($scope, $http, $routeParams, TripService, UserService, TaskService){
 
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
@@ -44,7 +44,6 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
 
     TripService.editTrip(the_id).then(function(payload) {
       $scope.tripInfo = payload.data[0];
-      console.log(payload);
     })
 
     TripService.deleteTrip(the_id).then(function(payload) {
@@ -56,6 +55,21 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
     }, function(error){
       console.log("an error occurred");
     })
+
+    TaskService.getTasks(the_id).then(function(payload){
+     $scope.task_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
+
+    $scope.task = {};
+    $scope.postTask = function() {
+    TaskService.newTask(the_id, $scope.task).then(function() {
+      console.log("posted task");
+    })
+    }
+
+    
 
 
 }])

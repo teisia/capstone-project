@@ -1,3 +1,11 @@
+app.factory("UserService", function($http) {
+  return {
+    getUsers: function() {
+      return $http.get("/users");
+    }
+  }
+})
+
 app.factory("TripService", function($http){
 
 return {
@@ -19,14 +27,24 @@ return {
   deleteTrip: function(trip_id) {
     return $http.post("/trips/"+trip_id);
   }
-  }
+}
 
 });
 
-app.factory("UserService", function($http) {
-  return {
-    getUsers: function() {
-      return $http.get("/users");
-    }
+app.factory("TaskService", function($http){
+
+return {
+  getTasks: function(trip_id) {
+    return $http.get("/trips/"+trip_id+"/tasks");
+  },
+
+  newTask: function(trip_id, task_object) {
+    return $http.post("/trips/"+trip_id+"/tasks", task_object);
+  },
+
+  editTask: function(trip_id) {
+    return $http.get("/trips/"+trip_id+"/tasks");
   }
-})
+}
+
+});

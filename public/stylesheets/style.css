@@ -30,3 +30,7 @@ body {
   width: 100%;
   margin-top: 1rem;
 }
+
+.taskEdit {
+  color: blue;
+}

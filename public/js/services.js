@@ -42,8 +42,12 @@ return {
     return $http.post("/trips/"+trip_id+"/tasks", task_object);
   },
 
-  editTask: function(trip_id) {
-    return $http.get("/trips/"+trip_id+"/tasks");
+  editTask: function(trip_id, task) {
+    return $http.post("/trips/"+trip_id+"/tasks/"+task.id+"/edit", task);
+  },
+
+  deleteTask: function(trip_id, task_id) {
+    return $http.post("/trips/"+trip_id+"/tasks/"+task_id+"/delete");
   }
 }
 

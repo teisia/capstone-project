@@ -24,7 +24,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
     }
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', 'TaskService', function($scope, $http, $routeParams, TripService, UserService, TaskService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService){
 
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
@@ -34,7 +34,11 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
       $scope.showmeNT = !$scope.showmeNT;
     }
 
-    the_id = $routeParams.id;
+    $scope.toggleEditTaskForm = function () {
+      this.showmeETask = !this.showmeETask;
+    }
+
+    var the_id = $routeParams.id;
 
     TripService.getTrip(the_id).then(function(payload){
       $scope.singleTrip = payload.data[0];
@@ -69,7 +73,25 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', 'Trip
     })
     }
 
-    
+  $scope.editTask = function (task) {
+    console.log("IN THE EDIT");
+    TaskService.editTask(the_id, task).then(function(payload) {
+      console.log("*****RESPONSE****");
+      console.log(payload);
+      console.log("you edited it");
+      $scope.task_collection = payload.data;
+    })
+    }
+
+$scope.deleteTask = function (taskId) {
+  console.log("IN THE DELETE");
+  TaskService.deleteTask(the_id, taskId).then(function(payload) {
+    console.log("*****RESPONSE****");
+    console.log(payload);
+    console.log("you deleted it");
+    $scope.task_collection = payload.data;
+  })
+  }
 
 
 }])

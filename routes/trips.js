@@ -45,8 +45,6 @@ router.post("/edit", function(req,res) {
 });
 
 router.post("/delete", function(req,res) {
-  console.log('**********');
-  console.log(req.body);
   trips().where("id", req.body.id).del().then(function(){
     res.redirect('/#/dashboard');
   })

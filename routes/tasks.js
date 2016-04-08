@@ -32,4 +32,18 @@ router.post("/:id/tasks", function(req,res){
   })
 });
 
+router.post("/:id/tasks/:task_id/edit", function(req,res) {
+  console.log("EDIT STUFF *****");
+  tasks().where("id", req.params.task_id).update(req.body).then(function(result){
+    res.redirect("/" +req.params.id+ "/tasks");
+  })
+});
+
+router.post("/:id/tasks/:task_id/delete", function(req,res) {
+  tasks().where("id", req.params.task_id).del().then(function(){
+    res.redirect("/" +req.params.id+ "/tasks");
+  })
+});
+
+
 module.exports = router;

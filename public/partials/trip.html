@@ -15,7 +15,7 @@
     <h1>trip details go here</h1>
     <p>{{singleTrip.title}}</p>
     <p>{{singleTrip.description}}</p>
-    <button class='btn' ng-click='toggleEditTripForm()'>Edit Trip</button>
+    <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
     <div class='form' ng-show='showmeET'>
      <form method='post' action='/trips/edit'>
       <fieldset class='form-group'>
@@ -48,7 +48,7 @@
   <div class='well col-sm-6'>
     <h1>trip details i.e. urls to stuff or other shit</h1>
   </div>
-    <div class='well col-sm-6'>
+    <div class='well col-sm-5 right'>
       <h1>tasks go here</h1>
       <div ng-repeat='task in task_collection'>
         <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <br>
-      <button class='btn' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Task</button>
+      <button class='btn buttonSm' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Task</button>
       <div class='form' ng-show='showmeNT'>
        <form ng-submit='postTask()'>
            <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
@@ -104,8 +104,10 @@
   </div>
   <div class='well col-sm-6'>
     <h1>message board goes here</h1>
+    <div id='messageBoardContainer'>
+    </div>
   </div>
-  <div class='well col-sm-6'>
+  <div class='well col-sm-5 right'>
     <h1>calendar goes here</h1>
   </div>
 </div>

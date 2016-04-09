@@ -14,13 +14,13 @@
   <div ng-repeat='user in users'>
    <img src='{{user.picture}}'>
   </div>
-  <div class='well'>
+  <div class='well full'>
     <h1>My Trips</h1>
     <div ng-repeat='trip in trip_collection'>
       <a href='/#/trips/{{trip.id}}'>{{trip.title}}</a>
     </div>
     <br>
-    <button class='btn' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
+    <button class='btn buttonSm' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
     <div class='form' ng-show='showme'>
      <form ng-submit='postTrip()'>
        <fieldset class='form-group'>
@@ -39,7 +39,7 @@
      </form>
     </div>
   </div>
-  <div class='well'>
+  <div class='well full'>
     <h1>My Calendar</h1>
   </div>
 </div>

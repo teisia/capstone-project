@@ -1,5 +1,5 @@
 body {
-
+  background-color: #ADD8E6;
 }
 
 #splashBackground img {
@@ -19,8 +19,13 @@ body {
   margin: 20rem auto;
 }
 
+.well {
+  border-radius: 1rem;
+  margin: 2rem;
+}
+
 .form {
-  background-color: white;
+  background-color: #D3D3D3;
   padding: 3rem;
   margin-top: 2rem;
   border-radius: 1rem;
@@ -29,8 +34,20 @@ body {
 .button {
   width: 100%;
   margin-top: 1rem;
+  background-color: #98FB98
+}
+
+.buttonSm {
+  background-color: #98FB98
 }
 
 .taskEdit {
   color: blue;
+}
+
+#messageBoardContainer {
+  height: 30rem;
+  width: 100%;
+  background-color: white;
+  margin: 0 auto;
 }

@@ -1,3 +1,15 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand">Plan Together</span>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class='dashboard'>
   <div ng-repeat='user in users'>
    <img src='{{user.picture}}'>
@@ -5,7 +17,7 @@
   <div class='well'>
     <h1>My Trips</h1>
     <div ng-repeat='trip in trip_collection'>
-      {{trip.title}}
+      <a href='/#/trips/{{trip.id}}'>{{trip.title}}</a>
     </div>
     <br>
     <button class='btn' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>

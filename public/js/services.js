@@ -62,6 +62,10 @@ return {
 
   newMessage: function(trip_id, message_object) {
     return $http.post("/trips/"+trip_id+"/messages", message_object);
+  },
+
+  editMessage: function(trip_id, message) {
+    return $http.post("/trips/"+trip_id+"/messages/"+message.id+"/edit", message);
   }
 }
 

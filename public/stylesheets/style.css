@@ -73,6 +73,21 @@ nav {
   padding: 1rem 2rem;
 }
 
+.msgEdit {
+  padding: 1rem 2rem;
+  background-color: #E9E9E9;
+  width: 95%;
+  margin: 0 auto 2rem auto;
+}
+
+.msgEdit input {
+  width: 100%;
+}
+
+.msgEdit button {
+  width: 100%;
+}
+
 @media screen and (max-width:70em) {
   #splashBackground img {
     position: absolute;

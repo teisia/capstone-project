@@ -49,6 +49,10 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       $scope.showmeNM = !$scope.showmeNM;
     }
 
+    $scope.toggleEditMsgForm = function () {
+      this.showmeEM = !this.showmeEM;
+    }
+
     var the_id = $routeParams.id;
 
     TripService.getTrip(the_id).then(function(payload){
@@ -84,19 +88,19 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     })
     }
 
-  $scope.editTask = function (task) {
-    TaskService.editTask(the_id, task).then(function(payload) {
-      console.log("you edited it");
-      $scope.task_collection = payload.data;
-    })
-    }
+    $scope.editTask = function (task) {
+      TaskService.editTask(the_id, task).then(function(payload) {
+        console.log("you edited it");
+        $scope.task_collection = payload.data;
+      })
+      }
 
-  $scope.deleteTask = function (taskId) {
-    TaskService.deleteTask(the_id, taskId).then(function(payload) {
-      console.log("you deleted it");
-      $scope.task_collection = payload.data;
-    })
-    }
+    $scope.deleteTask = function (taskId) {
+      TaskService.deleteTask(the_id, taskId).then(function(payload) {
+        console.log("you deleted it");
+        $scope.task_collection = payload.data;
+      })
+      }
 
     MessageService.getMessages(the_id).then(function(payload){
      $scope.message_collection = payload.data;
@@ -111,5 +115,11 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     })
     }
 
+    $scope.editMessage = function (message) {
+      MessageService.editMessage(the_id, message).then(function(payload) {
+        console.log("you edited the msg");
+        $scope.message_collection = payload.data;
+      })
+      }
 
 }])

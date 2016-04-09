@@ -5,7 +5,7 @@
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
-        <li><img class='userPic img-responsive' src='{{user_collection.picture}}'></li>
+        <li ng-repeat="user in user_collection"><img class='userPic img-responsive' src='{{user.picture}}'></li>
         <li><a href="/#/sign-out">Sign Out</a></li>
       </ul>
     </div>
@@ -46,10 +46,10 @@
      </form>
    </div>
   </div>
-  <div class='well col-sm-6'>
+  <div class='well'>
     <h1>trip details i.e. urls to stuff or other shit</h1>
   </div>
-    <div class='well col-sm-5 right'>
+    <div class='well col-sm-5'>
       <h1>tasks go here</h1>
       <div ng-repeat='task in task_collection'>
         <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
@@ -106,7 +106,23 @@
   <div class='well col-sm-6'>
     <h1>message board goes here</h1>
     <div id='messageBoardContainer'>
-      <div class='messages' ng-repeat='message in message_collection'>{{message.message}}</div>
+      <div ng-repeat='message in message_collection'>
+        <div class='messages'> {{message.message}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
+        <div class='msgEdit' ng-show='showmeEM'>
+         <form class='meForm' ng-submit='editMessage(message)'>
+            <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+            <input type='hidden' name='user_id' value='{{user.id}}'>
+           <fieldset class='form-group'>
+             <label for='message'>Message</label>
+             <input class='form-control' name='message' type='text' ng-model='message.message'>
+           </fieldset>
+             <button class='btn button' ng-click='showmeEM=false'>Edit Message</button>
+         </form>
+         <form ng-submit='deleteMessage(message.id)'>
+            <button ng-click='showmeEM' class='btn button'>Delete Message</button>
+         </form>
+        </div>
+      </div>
     </div>
     <br>
     <button class='btn buttonSm' ng-click='toggleNewMessage()'><i class='fa fa-plus'></i> Add Message</button>
@@ -122,7 +138,7 @@
      </form>
     </div>
   </div>
-  <div class='well col-sm-5 right'>
+  <div class='well col-sm-11'>
     <h1>calendar goes here</h1>
   </div>
 </div>

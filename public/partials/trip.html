@@ -13,10 +13,12 @@
 </nav>
 <div class='tripContainer'>
   <div class='well'>
-    <h1>trip details go here</h1>
-    <p>{{singleTrip.title}}</p>
-    <p>{{singleTrip.description}}</p>
-    <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
+    <div class='text-center'>
+      <h1>{{singleTrip.title}}</h1>
+      <h3>{{singleTrip.description}}</h2>
+      <br>
+      <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
+    </div>
     <div class='form' ng-show='showmeET'>
      <form method='post' action='/trips/edit'>
       <fieldset class='form-group'>
@@ -47,10 +49,27 @@
    </div>
   </div>
   <div class='well'>
-    <h1>trip details i.e. urls to stuff or other shit</h1>
+    <h1>trip details</h1>
+    <div ng-repeat='tripd in tripd_collection'>
+      <div> {{tripd.detail}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
+      <div class='msgEdit' ng-show='showmeEM'>
+       <form class='meForm' ng-submit='editMessage(message)'>
+          <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+          <input type='hidden' name='user_id' value='{{user.id}}'>
+         <fieldset class='form-group'>
+           <label for='message'>Trip Detail</label>
+           <input class='form-control' name='detail' type='text' ng-model='trip.detail'>
+         </fieldset>
+           <button class='btn button' ng-click='showmeEM=false'>Edit Trip Detail</button>
+       </form>
+       <form ng-submit='deleteMessage(message.id)'>
+          <button ng-click='showmeEM=false' class='btn button'>Delete Trip Detail</button>
+       </form>
+      </div>
+    </div>
   </div>
     <div class='well col-sm-5'>
-      <h1>tasks go here</h1>
+      <h1>tasks</h1>
       <div ng-repeat='task in task_collection'>
         <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
         <div class='form' ng-show='showmeETask'>
@@ -104,7 +123,7 @@
     </div>
   </div>
   <div class='well col-sm-6'>
-    <h1>message board goes here</h1>
+    <h1>message board</h1>
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
         <div class='messages'> {{message.message}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
@@ -137,8 +156,5 @@
          <button class='btn button' ng-click='showmeNM=false'>Add Message</button>
      </form>
     </div>
-  </div>
-  <div class='well col-sm-11'>
-    <h1>calendar goes here</h1>
   </div>
 </div>

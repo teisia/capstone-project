@@ -31,6 +31,16 @@ return {
 
 });
 
+app.factory("TripDService", function($http){
+
+return {
+  getTripDs: function(trip_id) {
+    return $http.get("/trips/"+trip_id+"/tripD");
+  }
+}
+
+});
+
 app.factory("TaskService", function($http){
 
 return {

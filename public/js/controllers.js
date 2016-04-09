@@ -31,7 +31,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService, TripDService){
 
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
@@ -128,5 +128,11 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
         $scope.message_collection = payload.data;
       })
       }
+
+    TripDService.getTripDs(the_id).then(function(payload){
+     $scope.tripd_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
 
 }])

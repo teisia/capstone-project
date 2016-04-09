@@ -33,7 +33,7 @@ nav {
 
 .well {
   border-radius: 1rem;
-  margin: 2rem;
+  margin: 3rem;
   background-color: white;
   border: none;
 }
@@ -76,6 +76,7 @@ nav {
 .msgEdit {
   padding: 1rem 2rem;
   background-color: #E9E9E9;
+  border-radius: 1rem;
   width: 95%;
   margin: 0 auto 2rem auto;
 }

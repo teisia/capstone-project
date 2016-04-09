@@ -104,7 +104,29 @@
   </div>
   <div class='well col-sm-6'>
     <h1>message board goes here</h1>
-    <div id='messageBoardContainer'>
+    <div id='messageBoardContainer'></div>
+    <br>
+    <button class='btn buttonSm' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Message</button>
+    <div class='form' ng-show='showmeNT'>
+     <form ng-submit='postTask()'>
+         <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+       <fieldset class='form-group'>
+         <label for='description'>Description</label>
+         <input class='form-control' name='description' type='text' ng-model='task.description' placeholder='Task Description'>
+       </fieldset>
+       <fieldset class='form-group'>
+         <label for='due_date'>Due Date</label>
+         <input class='form-control' name='due_date' type='text' ng-model='task.due_date' placeholder='Task Due Date'>
+       </fieldset>
+       <fieldset class='form-group'>
+         <label for='user_id'>Assign Task</label>
+         <select class='form-control'>
+          <option diasbled>Select User</option>
+          <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+         </select>
+       </fieldset>
+         <button class='btn button' ng-click='showmeNT=false'>Add Task</button>
+     </form>
     </div>
   </div>
   <div class='well col-sm-5 right'>

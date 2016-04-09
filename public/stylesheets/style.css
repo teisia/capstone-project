@@ -50,4 +50,6 @@ body {
   width: 100%;
   background-color: white;
   margin: 0 auto;
+  border-radius: 1rem;
+  border: 1px solid gray;
 }

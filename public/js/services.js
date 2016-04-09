@@ -52,3 +52,13 @@ return {
 }
 
 });
+
+app.factory("MessageService", function($http){
+
+return {
+  getMessages: function(trip_id) {
+    return $http.get("/trips/"+trip_id+"/messages");
+  }
+}
+
+});

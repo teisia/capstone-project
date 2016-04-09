@@ -3,9 +3,10 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/#/dashboard">Plan Together</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Sign Out</a></li>
+        <li><img class='userPic img-responsive' src='{{user_collection.picture}}'></li>
+        <li><a href="/#/sign-out">Sign Out</a></li>
       </ul>
     </div>
   </div>
@@ -104,28 +105,20 @@
   </div>
   <div class='well col-sm-6'>
     <h1>message board goes here</h1>
-    <div id='messageBoardContainer'></div>
+    <div id='messageBoardContainer'>
+      <div class='messages' ng-repeat='message in message_collection'>{{message.message}}</div>
+    </div>
     <br>
-    <button class='btn buttonSm' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Message</button>
-    <div class='form' ng-show='showmeNT'>
-     <form ng-submit='postTask()'>
+    <button class='btn buttonSm' ng-click='toggleNewMessage()'><i class='fa fa-plus'></i> Add Message</button>
+    <div class='form' ng-show='showmeNM'>
+     <form ng-submit='postMessage()'>
          <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+         <input type='hidden' name='user_id' value='{{user.id}}'>
        <fieldset class='form-group'>
-         <label for='description'>Description</label>
-         <input class='form-control' name='description' type='text' ng-model='task.description' placeholder='Task Description'>
+         <label for='message'>Message</label>
+         <input class='form-control' name='message' type='text' ng-model='messages.message' placeholder='Enter Message Here'>
        </fieldset>
-       <fieldset class='form-group'>
-         <label for='due_date'>Due Date</label>
-         <input class='form-control' name='due_date' type='text' ng-model='task.due_date' placeholder='Task Due Date'>
-       </fieldset>
-       <fieldset class='form-group'>
-         <label for='user_id'>Assign Task</label>
-         <select class='form-control'>
-          <option diasbled>Select User</option>
-          <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
-         </select>
-       </fieldset>
-         <button class='btn button' ng-click='showmeNT=false'>Add Task</button>
+         <button class='btn button' ng-click='showmeNM=false'>Add Message</button>
      </form>
     </div>
   </div>

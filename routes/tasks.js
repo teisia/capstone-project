@@ -26,14 +26,12 @@ router.post("/:id/tasks", function(req,res){
     obj.due_date= req.body.due_date,
     obj.user_id= req.body.user_id,
     obj.trip_id= req.params.id,
-  console.log(obj);
     tasks().insert(obj).then(function(){
       res.json({success: true});
   })
 });
 
 router.post("/:id/tasks/:task_id/edit", function(req,res) {
-  console.log("EDIT STUFF *****");
   tasks().where("id", req.params.task_id).update(req.body).then(function(result){
     res.redirect("/" +req.params.id+ "/tasks");
   })

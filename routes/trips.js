@@ -14,6 +14,10 @@ function User() {
   return knex('user');
 };
 
+function messages() {
+  return knex('messages');
+}
+
 router.get("/", function(req,res){
  trips().select().then(function(payload){
    res.json(payload);

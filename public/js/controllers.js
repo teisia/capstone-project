@@ -4,7 +4,7 @@ app.controller('LoginCtrl', function($scope, $auth) {
   };
 });
 
-app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', function($scope, $http, $routeParams, TripService){
+app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
 
      $scope.toggleNewTripForm = function () {
        $scope.showme = !$scope.showme;
@@ -22,9 +22,16 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
       console.log("posted trip");
     })
     }
+
+    UserService.getUsers().then(function(payload) {
+      $scope.user_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
+
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService){
 
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
@@ -36,6 +43,10 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
 
     $scope.toggleEditTaskForm = function () {
       this.showmeETask = !this.showmeETask;
+    }
+
+    $scope.toggleNewMessage = function () {
+      $scope.showmeNM = !$scope.showmeNM;
     }
 
     var the_id = $routeParams.id;
@@ -74,24 +85,24 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     }
 
   $scope.editTask = function (task) {
-    console.log("IN THE EDIT");
     TaskService.editTask(the_id, task).then(function(payload) {
-      console.log("*****RESPONSE****");
-      console.log(payload);
       console.log("you edited it");
       $scope.task_collection = payload.data;
     })
     }
 
-$scope.deleteTask = function (taskId) {
-  console.log("IN THE DELETE");
-  TaskService.deleteTask(the_id, taskId).then(function(payload) {
-    console.log("*****RESPONSE****");
-    console.log(payload);
-    console.log("you deleted it");
-    $scope.task_collection = payload.data;
-  })
-  }
+  $scope.deleteTask = function (taskId) {
+    TaskService.deleteTask(the_id, taskId).then(function(payload) {
+      console.log("you deleted it");
+      $scope.task_collection = payload.data;
+    })
+    }
+
+    MessageService.getMessages(the_id).then(function(payload){
+     $scope.message_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
 
 
 }])

@@ -3,17 +3,15 @@
     <div class="navbar-header">
       <span class="navbar-brand">Plan Together</span>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Sign Out</a></li>
+        <li ng-repeat="user in user_collection"><img class='userPic img-responsive' src='{{user.picture}}'></li>
+        <li><a href="/#/sign-out">Sign Out</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <div class='dashboard'>
-  <div ng-repeat='user in users'>
-   <img src='{{user.picture}}'>
-  </div>
   <div class='well full'>
     <h1>My Trips</h1>
     <div ng-repeat='trip in trip_collection'>

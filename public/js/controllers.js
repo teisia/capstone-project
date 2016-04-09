@@ -104,5 +104,12 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       console.log("an error occurred");
     })
 
+    $scope.message = {};
+    $scope.postMessage = function() {
+    MessageService.newMessage(the_id, $scope.message).then(function() {
+      console.log("posted message");
+    })
+    }
+
 
 }])

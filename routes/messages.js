@@ -20,4 +20,15 @@ router.get("/:id/messages", function(req,res){
  })
 });
 
+
+router.post("/:id/messages", function(req,res){
+    var obj = {}
+    obj.user_id= req.body.user_id,
+    obj.trip_id= req.params.id,
+    obj.message= req.body.message,
+    messages().insert(obj).then(function(){
+      res.json({success: true});
+  })
+});
+
 module.exports = router;

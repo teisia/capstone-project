@@ -58,6 +58,10 @@ app.factory("MessageService", function($http){
 return {
   getMessages: function(trip_id) {
     return $http.get("/trips/"+trip_id+"/messages");
+  },
+
+  newMessage: function(trip_id, message_object) {
+    return $http.post("/trips/"+trip_id+"/messages", message_object);
   }
 }
 

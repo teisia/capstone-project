@@ -36,6 +36,11 @@ router.post("/:id/messages/:message_id/edit", function(req,res) {
   })
 });
 
+router.post("/:id/messages/:message_id/delete", function(req,res) {
+  messages().where("id", req.params.message_id).del().then(function(){
+    res.redirect("/" +req.params.id+ "/messages");
+  })
+});
 
 
 module.exports = router;

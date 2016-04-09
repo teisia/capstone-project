@@ -122,4 +122,11 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       })
       }
 
+    $scope.deleteMessage = function (messageId) {
+      MessageService.deleteMessage(the_id, messageId).then(function(payload) {
+        console.log("you deleted the msg");
+        $scope.message_collection = payload.data;
+      })
+      }
+
 }])

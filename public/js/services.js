@@ -66,6 +66,10 @@ return {
 
   editMessage: function(trip_id, message) {
     return $http.post("/trips/"+trip_id+"/messages/"+message.id+"/edit", message);
+  },
+
+  deleteMessage: function(trip_id, message_id) {
+    return $http.post("/trips/"+trip_id+"/messages/"+message_id+"/delete");
   }
 }
 

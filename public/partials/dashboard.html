@@ -15,7 +15,7 @@
   <div class='well full'>
     <h1>My Trips</h1>
     <div ng-repeat='trip in trip_collection'>
-      <a href='/#/trips/{{trip.id}}'>{{trip.title}}</a>
+      <h3><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h3>
     </div>
     <br>
     <button class='btn buttonSm' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>

@@ -145,7 +145,7 @@
     <h1>message board</h1>
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
-        <div class='messages'> {{message.message}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
+        <div class='messages'> {{message.message}} {{message.created_at}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
         <div class='msgEdit' ng-show='showmeEM'>
          <form class='meForm' ng-submit='editMessage(message)'>
             <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>

@@ -23,7 +23,7 @@ router.get('/auth/google', function(req,res){
     code: req.query.code,
     client_id: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com',
     client_secret: google,
-    redirect_uri: req.body.redirectUri,
+    redirect_uri: 'https://plantogether.herokuapp.com/auth/google',
     grant_type: 'authorization_code'
   };
 

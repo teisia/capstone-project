@@ -53,6 +53,14 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       this.showmeEM = !this.showmeEM;
     }
 
+    $scope.toggleNewTripDForm = function () {
+      $scope.showmeNTD = !$scope.showmeNTD;
+    }
+
+    $scope.toggleEditTripDForm = function () {
+      this.showmeETD = !this.showmeETD;
+    }
+
     var the_id = $routeParams.id;
 
     TripService.getTrip(the_id).then(function(payload){
@@ -134,5 +142,12 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     }, function(error){
       console.log("an error occurred");
     })
+
+    $scope.tripD = {};
+    $scope.postTripD = function() {
+    TripDService.newTripD(the_id, $scope.tripD).then(function() {
+      console.log("posted trip detail");
+    })
+    }
 
 }])

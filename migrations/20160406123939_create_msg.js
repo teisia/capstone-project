@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.integer('user_id');
     table.integer('trip_id');
     table.text('message');
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
   })
 };
 

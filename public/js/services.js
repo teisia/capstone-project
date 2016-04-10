@@ -36,6 +36,10 @@ app.factory("TripDService", function($http){
 return {
   getTripDs: function(trip_id) {
     return $http.get("/trips/"+trip_id+"/tripD");
+  },
+
+  newTripD: function(trip_id, tripd_object) {
+    return $http.post("/trips/"+trip_id+"/tripD", tripd_object);
   }
 }
 

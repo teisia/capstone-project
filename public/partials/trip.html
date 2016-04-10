@@ -67,6 +67,19 @@
        </form>
       </div>
     </div>
+    <br>
+    <button class='btn buttonSm' ng-click='toggleNewTripDForm()'><i class='fa fa-plus'></i> Add Trip Detail</button>
+    <div class='form' ng-show='showmeNTD'>
+     <form ng-submit='postTripD()'>
+         <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+         <input type='hidden' name='user_id' value='{{user.id}}'>
+       <fieldset class='form-group'>
+         <label for='detail'>Message</label>
+         <input class='form-control' name='detail' type='text' ng-model='tripD.detail' placeholder='Enter Trip Details Here'>
+       </fieldset>
+         <button class='btn button' ng-click='showmeNTD=false'>Add Trip Detail</button>
+     </form>
+    </div>
   </div>
     <div class='well col-sm-5'>
       <h1>tasks</h1>

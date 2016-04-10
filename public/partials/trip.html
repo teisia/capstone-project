@@ -38,9 +38,7 @@
        <input class='form-control' name='trip_end' type='text' ng-model='tripInfo.trip_end'>
        <input type='hidden' name="id" value='{{tripInfo.id}}'>
       </fieldset>
-      <fieldset class='form-group'>
        <button class='btn button' ng-click='showmeET=false'>Update Trip</button>
-      </fieldset>
      </form>
      <form method='post' action='/trips/delete'>
         <input type='hidden' name="id" value='{{tripInfo.id}}'>
@@ -51,19 +49,23 @@
   <div class='well'>
     <h1>trip details</h1>
     <div ng-repeat='tripd in tripd_collection'>
-      <div> {{tripd.detail}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
-      <div class='msgEdit' ng-show='showmeEM'>
-       <form class='meForm' ng-submit='editMessage(message)'>
-          <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
-          <input type='hidden' name='user_id' value='{{user.id}}'>
+      <div> {{tripd.detail}} <a href='{{tripd.url}}' target='_blank'>link</a> <span class='taskEdit' ng-click='toggleEditTripDForm()'>edit</span></div>
+      <div class='form' ng-show='showmeETD'>
+       <form ng-submit='editTripD(tripd)'>
+           <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
+           <input type='hidden' name='user_id' value='{{user.id}}'>
          <fieldset class='form-group'>
-           <label for='message'>Trip Detail</label>
-           <input class='form-control' name='detail' type='text' ng-model='trip.detail'>
+           <label for='detail'>Trip Details</label>
+           <input class='form-control' name='detail' type='text' ng-model='tripd.detail'>
          </fieldset>
-           <button class='btn button' ng-click='showmeEM=false'>Edit Trip Detail</button>
+         <fieldset class='form-group'>
+           <label for='url'>URL (if applicable)</label>
+           <input class='form-control' name='url' type='text' ng-model='tripd.url'>
+         </fieldset>
+         <button class='btn button' ng-click='showmeETD=false'>Update Trip Detail</button>
        </form>
-       <form ng-submit='deleteMessage(message.id)'>
-          <button ng-click='showmeEM=false' class='btn button'>Delete Trip Detail</button>
+       <form ng-submit='deleteTripD(tripd.id)'>
+          <button ng-click='showmeETD=false' class='btn button'>Delete Trip Detail</button>
        </form>
       </div>
     </div>
@@ -74,8 +76,12 @@
          <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
          <input type='hidden' name='user_id' value='{{user.id}}'>
        <fieldset class='form-group'>
-         <label for='detail'>Message</label>
+         <label for='detail'>Trip Details</label>
          <input class='form-control' name='detail' type='text' ng-model='tripD.detail' placeholder='Enter Trip Details Here'>
+       </fieldset>
+       <fieldset class='form-group'>
+         <label for='url'>URL (if applicable)</label>
+         <input class='form-control' name='url' type='text' ng-model='tripD.url' placeholder='www.example.com'>
        </fieldset>
          <button class='btn button' ng-click='showmeNTD=false'>Add Trip Detail</button>
      </form>

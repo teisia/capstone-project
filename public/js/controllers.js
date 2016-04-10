@@ -150,4 +150,18 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     })
     }
 
+    $scope.editTripD = function (tripd) {
+      TripDService.editTripD(the_id, tripd).then(function(payload) {
+        console.log("you edited the trip detail");
+        $scope.tripd_collection = payload.data;
+      })
+      }
+
+    $scope.deleteTripD = function (tripdId) {
+      TripDService.deleteTripD(the_id, tripdId).then(function(payload) {
+        console.log("you deleted the trip detail");
+        $scope.tripd_collection = payload.data;
+      })
+      }
+
 }])

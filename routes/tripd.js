@@ -29,22 +29,24 @@ router.post("/:id/tripD", function(req,res){
     obj.detail= req.body.detail,
     obj.user_id= req.body.user_id,
     obj.trip_id= req.params.id,
+    obj.url= req.body.url,
     tripD().insert(obj).then(function(){
       res.json({success: true});
   })
 });
-/*
-router.post("/:id/tasks/:task_id/edit", function(req,res) {
-  tasks().where("id", req.params.task_id).update(req.body).then(function(result){
-    res.redirect("/" +req.params.id+ "/tasks");
+
+router.post("/:id/tripD/:tripd_id/edit", function(req,res) {
+  tripD().where("id", req.params.tripd_id).update(req.body).then(function(result){
+    res.redirect("/" +req.params.id+ "/tripD");
   })
 });
 
-router.post("/:id/tasks/:task_id/delete", function(req,res) {
-  tasks().where("id", req.params.task_id).del().then(function(){
-    res.redirect("/" +req.params.id+ "/tasks");
+router.post("/:id/tripD/:tripd_id/delete", function(req,res) {
+  tripD().where("id", req.params.tripd_id).del().then(function(){
+    res.redirect("/" +req.params.id+ "/tripD");
   })
-});*/
+});
+
 
 
 

@@ -40,6 +40,14 @@ return {
 
   newTripD: function(trip_id, tripd_object) {
     return $http.post("/trips/"+trip_id+"/tripD", tripd_object);
+  },
+
+  editTripD: function(trip_id, tripd) {
+    return $http.post("/trips/"+trip_id+"/tripD/"+tripd.id+"/edit", tripd);
+  },
+
+  deleteTripD: function(trip_id, tripd_id) {
+    return $http.post("/trips/"+trip_id+"/tripD/"+tripd_id+"/delete");
   }
 }
 

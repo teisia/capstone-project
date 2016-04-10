@@ -4,9 +4,16 @@ app.controller('LoginCtrl', function($scope, $auth) {
   };
 });
 
+app.controller('LogOutCtrl', function($scope, $auth, SignOutService) {
+  SignOutService.signout = function() {
+  alert('You have been logged out.');
+  }
+});
+
+
 app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
 
-     $scope.toggleNewTripForm = function () {
+     $scope.toggleNewTripForm = function() {
        $scope.showme = !$scope.showme;
      }
 

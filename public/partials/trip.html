@@ -16,6 +16,8 @@
     <div class='text-center'>
       <h1>{{singleTrip.title}}</h1>
       <h3>{{singleTrip.description}}</h2>
+      <p>Start Date: {{singleTrip.trip_start}}</p>
+      <p>End Date: {{singleTrip.trip_end}}</p>
       <br>
       <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
     </div>
@@ -107,7 +109,7 @@
            <fieldset class='form-group'>
              <label for='user_id'>Assign Task</label>
              <select class='form-control'>
-              <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+              <option ng-model='task.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
              </select>
            </fieldset>
              <br>
@@ -118,6 +120,7 @@
          </form>
         </div>
     </div>
+    <br>
       <button class='btn buttonSm' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Task</button>
       <div class='form' ng-show='showmeNT'>
        <form ng-submit='postTask()'>
@@ -134,7 +137,7 @@
            <label for='user_id'>Assign Task</label>
            <select class='form-control'>
             <option diasbled>Select User</option>
-            <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+            <option ng-repeat='user in user_collection' ng-model='task.user_id' value='{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
            </select>
          </fieldset>
            <button class='btn button' ng-click='showmeNT=false'>Add Task</button>

@@ -15,6 +15,11 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
            templateUrl: 'partials/trip.html',
            controller: 'SingleTripController'
          })
+
+       .when('/sign-out', {
+           templateUrl: 'partials/splash.html',
+           controller: 'LogOutCtrl'
+         })
         .otherwise({
            redirectTo: '/dashboard'
          });

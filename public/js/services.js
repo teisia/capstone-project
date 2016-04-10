@@ -1,3 +1,11 @@
+app.factory("SignOutService", function($http) {
+  return {
+    signout: function() {
+      return $http.get("/sign-out");
+    }
+  }
+})
+
 app.factory("UserService", function($http) {
   return {
     getUsers: function() {

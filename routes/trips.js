@@ -24,8 +24,11 @@ function messages() {
 }
 
 router.get("/", function(req,res){
- trips().select().then(function(payload){
+ trips().select().where({admin_id: req.cookies.user}).then(function(payload){
+   User().select().then(function(payload2) {
    res.json(payload);
+   res.json(payload2);
+  })
  })
 });
 

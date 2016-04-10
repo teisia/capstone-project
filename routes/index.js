@@ -9,12 +9,10 @@ function User() {
   return knex('user');
 };
 
-function createToken(user){
-  return jwt.sign(user, process.env.TOKEN_SECRET)
-}
-function verifyToken(user){
-  return jwt.verify(user, process.env.TOKEN_SECRET)
-}
+router.get("/sign-out", function(req,res){
+ res.clearCookie('user');
+   res.redirect('/');
+});
 
 router.get('/auth/google', function(req,res){
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
@@ -67,12 +65,13 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
   } else {
     // create a new user account or return existing one
     User().select().where({google_id: profile.sub}).first().then(function(rest){
-      console.log("here is my result")
-      console.log(rest)
+      //console.log("here is my result")
+      //console.log(rest)
       if (rest){
         //cookies here
-        console.log(rest.id)
         res.cookie('user', rest.id)
+        console.log(rest.id);
+        //res.redirect('/#/dashboard'+rest.id);
         return res.send('You are now logged in!');
       }
       var user = {}
@@ -81,27 +80,21 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       user.first_name = profile.given_name;
       user.last_name = profile.family_name;
       user.email = profile.email;
-      var token = createToken(user);
       // Knex call to create user
     User().insert(user).then(function(response){
-      res.send({token: token});
-      res.redirect('/dashboard');
+      User().select().where({google_id: user.google_id}).first().then(function(result) {
+        console.log("*********");
+        console.log(result.id);
+        res.cookie('user', result.id)
+        console.log(result.id);
+        res.redirect('/#/dashboard/'+result.id);
+      })
     })
     });
   }
 });
 });
 });
-
-//Verify User Logged in: getting user information
-router.post('/user', function(req, res){
-  var token = req.body.token
-  var user = verifyToken(token)
-  User().where('google_id', user.google_id).first().then(function(result){
-    res.send(result)
-  })
-
-})
 
 
 module.exports = router;

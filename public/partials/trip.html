@@ -44,7 +44,7 @@
         <input type='hidden' name="id" value='{{tripInfo.id}}'>
         <button class='btn button'>Delete Trip</button>
      </form>
-   </div>
+    </div>
   </div>
   <div class='well'>
     <h1>trip details</h1>
@@ -90,7 +90,9 @@
     <div class='well col-sm-5'>
       <h1>tasks</h1>
       <div ng-repeat='task in task_collection'>
-        <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
+        <fieldset class='form-group'>
+          <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
+        </fieldset>
         <div class='form' ng-show='showmeETask'>
          <form ng-submit='editTask(task)'>
              <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
@@ -116,7 +118,6 @@
          </form>
         </div>
     </div>
-    <br>
       <button class='btn buttonSm' ng-click='toggleNewTaskForm()'><i class='fa fa-plus'></i> Add Task</button>
       <div class='form' ng-show='showmeNT'>
        <form ng-submit='postTask()'>

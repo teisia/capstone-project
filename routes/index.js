@@ -9,6 +9,13 @@ function User() {
   return knex('user');
 };
 
+function createToken(user){
+  return jwt.sign(user, process.env.TOKEN_SECRET)
+}
+function verifyToken(user){
+  return jwt.verify(user, process.env.TOKEN_SECRET)
+}
+
 router.get('/auth/google', function(req,res){
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
@@ -16,7 +23,7 @@ router.get('/auth/google', function(req,res){
     code: req.query.code,
     client_id: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com',
     client_secret: google,
-    redirect_uri: 'http://localhost:3000/auth/google',
+    redirect_uri: req.body.redirectUri,
     grant_type: 'authorization_code'
   };
 
@@ -74,16 +81,27 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       user.first_name = profile.given_name;
       user.last_name = profile.family_name;
       user.email = profile.email;
+      var token = createToken(user);
       // Knex call to create user
     User().insert(user).then(function(response){
-      res.send('You have created a user baby');
-      console.log(user.id);
+      res.send({token: token});
+      res.redirect('/dashboard');
     })
     });
   }
 });
 });
 });
+
+//Verify User Logged in: getting user information
+router.post('/user', function(req, res){
+  var token = req.body.token
+  var user = verifyToken(token)
+  User().where('google_id', user.google_id).first().then(function(result){
+    res.send(result)
+  })
+
+})
 
 
 module.exports = router;

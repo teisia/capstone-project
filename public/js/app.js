@@ -31,7 +31,7 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
     $authProvider.google({
       url: 'https://plantogether.herokuapp.com',
       authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-      redirectUri: "htts://plantogether.herokuapp.com/auth/google",
+      redirectUri: "https://plantogether.herokuapp.com/auth/google",
       requiredUrlParams: ['scope'],
       optionalUrlParams: ['display'],
       scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],

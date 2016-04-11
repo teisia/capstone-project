@@ -65,13 +65,12 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
   } else {
     // create a new user account or return existing one
     User().select().where({google_id: profile.sub}).first().then(function(rest){
-      //console.log("here is my result")
-      //console.log(rest)
+      console.log("here is my result")
+      console.log(rest)
       if (rest){
-        //cookies here
         res.cookie('user', rest.id)
         console.log(rest.id);
-        //res.redirect('/#/dashboard'+rest.id);
+        res.redirect('/#/dashboard'+rest.id);
         return res.send('You are now logged in!');
       }
       var user = {}
@@ -83,10 +82,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       // Knex call to create user
     User().insert(user).then(function(response){
       User().select().where({google_id: user.google_id}).first().then(function(result) {
-        console.log("*********");
-        console.log(result.id);
         res.cookie('user', result.id)
-        console.log(result.id);
         res.redirect('/#/dashboard/'+result.id);
       })
     })

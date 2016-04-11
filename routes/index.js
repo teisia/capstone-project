@@ -21,7 +21,7 @@ router.get('/auth/google', function(req,res){
     code: req.query.code,
     client_id: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com',
     client_secret: google,
-    redirect_uri: 'https://plantogether.herokuapp.com/auth/google',
+    redirect_uri: 'http://localhost:3000/auth/google',
     grant_type: 'authorization_code'
   };
 
@@ -83,6 +83,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       user.email = profile.email;
       // Knex call to create user
     User().insert(user).then(function(response){
+      console.log(user);
       User().select().where({google_id: user.google_id}).first().then(function(result) {
         res.cookie('user', result.id)
         res.redirect('/#/dashboard/'+result.id);

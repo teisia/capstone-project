@@ -16,7 +16,7 @@ function tasks() {
 };
 
 function User() {
-  return knex('userList');
+  return knex('user_list');
 };
 
 function messages() {

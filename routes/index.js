@@ -58,8 +58,8 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
         user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200');
         user.displayName = user.displayName || profile.name;
         user.save(function(){
-          res.send({token: user});
           res.cookie('user', user.id)
+          res.send({token: user});
         });
       });
     });

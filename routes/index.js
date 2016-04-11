@@ -59,6 +59,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
         user.displayName = user.displayName || profile.name;
         user.save(function(){
           res.send({token: user});
+          res.cookie('user', user.id)
         });
       });
     });

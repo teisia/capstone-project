@@ -7,8 +7,17 @@ h1 {
   font-family: 'Lato', sans-serif;
 }
 
+.link {
+  margin-left: .5rem;
+}
+
+.msgEditLink {
+  padding: 0 2rem;
+}
+
 em {
   color: gray;
+  margin-left: 1rem;
 }
 
 .title {
@@ -71,6 +80,10 @@ nav a {
 
 .buttonSm {
   background-color: #98FB98
+}
+
+.btnAM {
+  margin-left: 1rem;
 }
 
 .tripContainer img {

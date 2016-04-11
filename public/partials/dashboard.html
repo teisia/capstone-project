@@ -34,10 +34,7 @@
          <input class='form-control' name='trip_end' type='text' ng-model='trip.trip_end' placeholder='Trip End Date'>
       </fieldset>
       <fieldset class='form-group'>
-        <label for='user_id'>Add Trip Members</label>
-        <select multiple name='user_id' class='form-control'>
-         <option value={{user.id}} ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
-        </select>
+         <input class='form-control' name='image' type='text' ng-model='trip.image' placeholder='Image URL'>
       </fieldset>
        <button class='btn button' ng-click='showme=false'>Add Trip</button>
      </form>

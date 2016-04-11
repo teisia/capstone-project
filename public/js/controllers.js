@@ -40,6 +40,10 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
 app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService, TripDService){
 
+    $scope.toggleAddMembersForm = function () {
+      $scope.showmeAM = !$scope.showmeAM;
+    }
+
     $scope.toggleEditTripForm = function () {
       $scope.showmeET = !$scope.showmeET;
     }

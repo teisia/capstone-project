@@ -21,6 +21,7 @@
       <p>End Date: {{singleTrip.trip_end}}</p>
       <br>
       <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
+      <button class='btn buttonSm btnAM' ng-click='toggleAddMembersForm()'>Add Trip Members</button>
     </div>
     <div class='form' ng-show='showmeET'>
      <form method='post' action='/trips/edit'>
@@ -41,6 +42,10 @@
        <input class='form-control' name='trip_end' type='text' ng-model='tripInfo.trip_end'>
        <input type='hidden' name="id" value='{{tripInfo.id}}'>
       </fieldset>
+      <label for='image'>Trip Image</label>
+      <fieldset class='form-group'>
+         <input class='form-control' name='image' type='text' ng-model='tripInfo.image'>
+      </fieldset>
        <button class='btn button' ng-click='showmeET=false'>Update Trip</button>
      </form>
      <form method='post' action='/trips/delete'>
@@ -48,11 +53,24 @@
         <button class='btn button'>Delete Trip</button>
      </form>
     </div>
+    <div class='form' ng-show='showmeAM'>
+      <form>
+        <input type='hidden' value='{{tripInfo.id}}'>
+        <fieldset class='form-group'>
+          <label for='user_id'>Members</label>
+          <select multiple class='form-control'>
+           <option ng-model='trip_user.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+          </select>
+        </fieldset>
+         <button class='btn button' ng-click='showmeAM=false'>Add Members</button>
+      </form>
+    </div>
   </div>
   <div class='well'>
     <h2>TRIP DETAILS</h2>
     <div ng-repeat='tripd in tripd_collection'>
-      <div> {{tripd.detail}} <a href='{{tripd.url}}' target='_blank'>link</a> <span class='taskEdit' ng-click='toggleEditTripDForm()'>edit</span></div>
+      <div> {{tripd.detail}} <a href='{{tripd.url}}' target='_blank'> <i class="fa fa-external-link link"></i></a></div>
+      <span class='taskEdit' ng-click='toggleEditTripDForm()'>edit</span>
       <div class='form' ng-show='showmeETD'>
        <form ng-submit='editTripD(tripd)'>
            <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
@@ -150,7 +168,10 @@
     <h2>MESSAGE BOARD</h2>
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
-        <div class='messages'> {{message.message}} <em>{{message.created_at}}</em> <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
+        <div class='messages'> {{message.message}} <em>{{message.created_at}}</em></div>
+        <div class='msgEditLink'>
+          <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span>
+        </div>
         <div class='msgEdit' ng-show='showmeEM'>
          <form class='meForm' ng-submit='editMessage(message)'>
             <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>

@@ -11,7 +11,6 @@ function tripUser() {
   return knex('trip_user');
 };
 
-
 function tasks() {
   return knex('tasks');
 };
@@ -49,6 +48,7 @@ router.post("/", function(req,res){
   obj.trip_start= req.body.trip_start,
   obj.trip_end= req.body.trip_end
   obj.admin_id= req.cookies.user,
+  obj.image = req.body.image,
   trips().insert(obj).then(function(){
     res.json({success: true});
   })

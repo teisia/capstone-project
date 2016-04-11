@@ -34,7 +34,7 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
       redirectUri: "http://localhost:3000/auth/google",
       requiredUrlParams: ['scope'],
       optionalUrlParams: ['display'],
-      scope: ['profile', 'email'],
+      scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
       scopePrefix: 'openid',
       scopeDelimiter: ' ',
       display: 'popup',

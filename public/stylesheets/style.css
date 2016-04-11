@@ -1,5 +1,15 @@
 body {
   background-color: #ADD8E6;
+  color: black;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: 5rem;
 }
 
 #splashBackground img {

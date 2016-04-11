@@ -14,7 +14,12 @@
 <div class='dashboard'>
   <div class='well col-sm-4'>
     <h2>MY TRIPS</h2>
+    <h5>TRIPS I CREATED</h5>
     <div ng-repeat='trip in trip_collection'>
+      <h3><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h3>
+    </div>
+    <h5>TRIPS I'M INVITED TO</h5>
+    <div ng-repeat='trip in invited_collection'>
       <h3><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h3>
     </div>
     <br>

@@ -63,6 +63,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
         user.save(function(){
           res.cookie('user', user.id)
           res.send({token: user});
+          res.redirect('/#/dashboard')
         });
       });
     });
@@ -73,7 +74,6 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       console.log(rest)
       if (rest){
         res.cookie('user', rest.id)
-        res.redirect('/#/dashboard'+rest.id);
         return res.send('You are now logged in!');
       }
       var user = {}
@@ -88,7 +88,6 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       console.log(user);
       User().select().where({google_id: user.google_id}).first().then(function(result) {
         res.cookie('user', result.id)
-        res.redirect('/#/dashboard/'+result.id);
       })
     })
     });

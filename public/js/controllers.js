@@ -1,7 +1,9 @@
-app.controller('LoginCtrl', function($scope, $auth) {
+app.controller('LoginCtrl', function($scope, $auth, $location) {
+
   $scope.authenticate = function(provider) {
   $auth.authenticate(provider);
   };
+
 });
 
 app.controller('LogOutCtrl', function($scope, $auth, SignOutService) {
@@ -18,7 +20,13 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
      }
 
     TripService.getTrips().then(function(payload){
-     $scope.trip_collection = payload.data;
+     $scope.trip_collection = payload.data.payload;
+    }, function(error){
+      console.log("an error occurred");
+    });
+
+    TripService.getTripsInvited().then(function(payload){
+     $scope.invited_collection = payload.data;
     }, function(error){
       console.log("an error occurred");
     });
@@ -31,7 +39,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
     }
 
     UserService.getUsers().then(function(payload) {
-      $scope.user_collection = payload.data;
+      $scope.user_collection = payload.data.payload;
     }, function(error){
       console.log("an error occurred");
     })
@@ -75,13 +83,13 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     var the_id = $routeParams.id;
 
     TripService.getTrip(the_id).then(function(payload){
-      $scope.singleTrip = payload.data[0];
+      $scope.singleTrip = payload.data.payload[0];
     }, function(error){
       console.log("an error occurred");
     });
 
     TripService.editTrip(the_id).then(function(payload) {
-      $scope.tripInfo = payload.data[0];
+      $scope.tripInfo = payload.data.payload[0];
     })
 
     TripService.deleteTrip(the_id).then(function(payload) {

@@ -34,6 +34,10 @@ return {
     return $http.get("/trips");
   },
 
+  getTripsInvited: function() {
+    return $http.get("/trips/invited");
+  },
+
   getTrip: function(trip_id) {
     return $http.get("/trips/"+trip_id);
   },

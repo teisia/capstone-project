@@ -23,6 +23,8 @@ var app = angular.module('angApp', ['ngRoute', 'satellizer'])
         .otherwise({
            redirectTo: '/dashboard'
          });
+         
+   $authProvider.loginRedirect = '/dashboard';
 
    $authProvider.google({
      clientId: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com'

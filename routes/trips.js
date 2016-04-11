@@ -26,8 +26,21 @@ function messages() {
 router.get("/", function(req,res){
  trips().select().where({admin_id: req.cookies.user}).then(function(payload){
    User().select().then(function(payload2) {
-   res.json(payload);
-   res.json(payload2);
+   res.json({payload: payload, payload2: payload2});
+  })
+ })
+});
+
+router.get("/invited", function(req,res){
+ tripUser().select().where({user_id: req.cookies.user}).then(function(payload){
+  trip_collection = [];
+  for (var i = 0; i < payload.length; i++) {
+    trip_collection.push(parseInt(payload[i].trip_id));
+  }
+  console.log(trip_collection);
+  
+  trips().whereIn('id', trip_collection).then(function(new_stuff){
+    res.json(new_stuff);
   })
  })
 });
@@ -35,8 +48,7 @@ router.get("/", function(req,res){
 router.get("/:id", function(req,res){
   trips().select().where({id: req.params.id}).then(function(payload){
       User().select().then(function(payload2) {
-        res.json(payload);
-        res.json(payload2);
+        res.json({payload: payload, payload2: payload2});
   })
  })
 });
@@ -84,9 +96,7 @@ router.get("/:id/members", function(req, res) {
   trips().select().then(function(payload){
     User().select().then(function(payload2) {
       tripUser().select().where({trip_id: req.params.id}).then(function(payload3) {
-        res.json(payload);
-        res.json(payload2);
-        res.json(payload3);
+        res.json({payload: payload, payload2: payload2, payload3: payload3});
       })
      })
     })

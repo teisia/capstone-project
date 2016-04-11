@@ -12,4 +12,10 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  User().where({id: req.params.id}).then(function(payload){
+    res.json(payload);
+  })
+});
+
 module.exports = router;

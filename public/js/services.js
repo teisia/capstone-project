@@ -10,7 +10,12 @@ app.factory("UserService", function($http) {
   return {
     getUsers: function() {
       return $http.get("/users");
+    },
+
+    getUser: function(user_id) {
+      return $http.get("/users/"+user_id);
     }
+
   }
 })
 
@@ -41,6 +46,7 @@ return {
   getTrip: function(trip_id) {
     return $http.get("/trips/"+trip_id);
   },
+
   newTrip: function(trip_object) {
     return $http.post("/trips", trip_object);
   },

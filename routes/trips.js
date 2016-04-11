@@ -38,7 +38,7 @@ router.get("/invited", function(req,res){
     trip_collection.push(parseInt(payload[i].trip_id));
   }
   console.log(trip_collection);
-  
+
   trips().whereIn('id', trip_collection).then(function(new_stuff){
     res.json(new_stuff);
   })
@@ -88,7 +88,7 @@ router.post("/:id/members", function(req, res) {
   })
 })
 
-router.get("/:id/members", function(req, res) {
+/*router.get("/:id/members", function(req, res) {
   trips().select('*').from ('trips').leftJoin('trip_user', function() {
     this.on('id', '=', 'trip_id')
      User().select('*').from('user').leftJoin('trip_user', function() {
@@ -102,6 +102,21 @@ router.get("/:id/members", function(req, res) {
     })
    })
   })
+})*/
+
+router.get("/:id/members", function(req, res) {
+  tripUser().select().where({trip_id: req.params.id}).then(function(payload){
+   user_collection = [];
+   for (var i = 0; i < payload.length; i++) {
+     user_collection.push(parseInt(payload[i].user_id));
+   }
+   console.log(user_collection);
+
+   User().whereIn('id', user_collection).then(function(new_stuff){
+     res.json(new_stuff);
+   })
+  })
+
 })
 
 

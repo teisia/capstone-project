@@ -32,6 +32,7 @@ request.post(accessTokenUrl, {json: true, form: params}, function(err, response,
 
 // retreive profile information about the current user.
 request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, response, profile){
+  console.log("profile*********************");
   console.log(profile);
   if (profile.error){
     return res.status(500).send({message: profile.error.message});
@@ -39,6 +40,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
   // link user accounts.
   if (req.header('Authorization')){
     User().select().where({google_id: profile.sub}).first().then(function(result){
+      console.log("result*****************");
       console.log(result);
       if (result){
         console.log("user returned **********");
@@ -67,11 +69,10 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
   } else {
     // create a new user account or return existing one
     User().select().where({google_id: profile.sub}).first().then(function(rest){
-      console.log("here is my result")
+      console.log("here is my result ***************")
       console.log(rest)
       if (rest){
         res.cookie('user', rest.id)
-        console.log(rest.id);
         res.redirect('/#/dashboard'+rest.id);
         return res.send('You are now logged in!');
       }
@@ -83,6 +84,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       user.email = profile.email;
       // Knex call to create user
     User().insert(user).then(function(response){
+      console.log("user****************");
       console.log(user);
       User().select().where({google_id: user.google_id}).first().then(function(result) {
         res.cookie('user', result.id)

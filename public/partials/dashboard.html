@@ -5,7 +5,6 @@
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
-        <li ng-repeat="user in user_collection"><img class='userPic img-responsive' src='{{user.picture}}'></li>
         <li><a href="/#/sign-out">Sign Out</a></li>
       </ul>
     </div>
@@ -13,17 +12,21 @@
 </nav>
 <div class='dashboard'>
   <div class='well col-sm-4'>
-    <h2>MY TRIPS</h2>
-    <h5>TRIPS I CREATED</h5>
-    <div ng-repeat='trip in trip_collection'>
-      <h3><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h3>
+    <h2 class='text-center'>MY TRIPS</h2>
+    <div class='col-sm-6'>
+      <h4>CREATED TRIPS</h4>
+      <div ng-repeat='trip in trip_collection'>
+        <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
+      </div>
     </div>
-    <h5>TRIPS I'M INVITED TO</h5>
-    <div ng-repeat='trip in invited_collection'>
-      <h3><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h3>
+    <div class='col-sm-6'>
+      <h4>INVITED TRIPS</h4>
+      <div ng-repeat='trip in invited_collection'>
+        <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
+      </div>
     </div>
     <br>
-    <button class='btn buttonSm' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
+    <button class='newTripBtn btn buttonSm' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
     <div class='form' ng-show='showme'>
      <form ng-submit='postTrip()'>
        <fieldset class='form-group'>

@@ -6,7 +6,7 @@ var knex = require('../db/knex');
 var google = process.env.GOOGLE_SECRET;
 
 function User() {
-  return knex('userList');
+  return knex('user_list');
 };
 
 router.get("/sign-out", function(req,res){

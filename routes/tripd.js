@@ -11,11 +11,11 @@ function tasks() {
 };
 
 function User() {
-  return knex('userList');
+  return knex('user_list');
 };
 
 function tripD() {
-  return knex('tripDetails')
+  return knex('trip_details')
 }
 
 router.get("/:id/tripD", function(req,res){

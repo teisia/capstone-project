@@ -11,7 +11,7 @@ function tasks() {
 };
 
 function User() {
-  return knex('userList');
+  return knex('user_list');
 };
 
 router.get("/:id/tasks", function(req,res){

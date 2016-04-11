@@ -3,7 +3,7 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 function User() {
-  return knex('userList');
+  return knex('user_list');
 };
 
 router.get('/', function(req, res, next) {

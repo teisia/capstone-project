@@ -75,6 +75,7 @@ nav a {
 
 .tripContainer img {
   border-radius: 10px;
+  height: 300px;
 }
 
 .taskEdit {

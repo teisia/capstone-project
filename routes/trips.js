@@ -33,10 +33,10 @@ router.get("/", function(req,res){
 });
 
 router.get("/:id", function(req,res){
- trips().select().where({id: req.params.id}).then(function(payload){
-   User().select().then(function(payload2) {
-     res.json(payload);
-     res.json(payload2);
+  trips().select().where({id: req.params.id}).then(function(payload){
+      User().select().then(function(payload2) {
+        res.json(payload);
+        res.json(payload2);
   })
  })
 });
@@ -73,6 +73,24 @@ router.post("/:id/members", function(req, res) {
   obj.user_id = req.body.user_id,
   tripUser().insert(obj).then(function(){
     res.json({success: true});
+  })
+})
+
+router.get("/:id/members", function(req, res) {
+  trips().select('*').from ('trips').leftJoin('trip_user', function() {
+    this.on('id', '=', 'trip_id')
+     User().select('*').from('user').leftJoin('trip_user', function() {
+       this.on('id', '=', 'user_id')
+  trips().select().then(function(payload){
+    User().select().then(function(payload2) {
+      tripUser().select().where({trip_id: req.params.id}).then(function(payload3) {
+        res.json(payload);
+        res.json(payload2);
+        res.json(payload3);
+      })
+     })
+    })
+   })
   })
 })
 

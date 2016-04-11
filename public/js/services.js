@@ -19,6 +19,10 @@ app.factory("MemberService", function($http) {
     postMembers: function(trip_id, members_object) {
       console.log(members_object);
       return $http.post("/trips/"+trip_id+"/members", {user_id: members_object});
+    },
+
+    getMembers: function(trip_id) {
+      return $http.get("/trips/"+trip_id+"/members");
     }
   }
 })

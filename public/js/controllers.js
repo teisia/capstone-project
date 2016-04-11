@@ -182,4 +182,10 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     })
     }
 
+    MemberService.getMembers(the_id).then(function(payload){
+     $scope.member_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
+
 }])

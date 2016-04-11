@@ -19,6 +19,10 @@
       <h3>{{singleTrip.description}}</h2>
       <p>Start Date: {{singleTrip.trip_start}}</p>
       <p>End Date: {{singleTrip.trip_end}}</p>
+      <h4>Trip Members</h4>
+      <div ng-repeat='member in member_collection'>
+        <p>{{member.id}}</p>
+      </div>
       <br>
       <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
       <button class='btn buttonSm btnAM' ng-click='toggleAddMembersForm()'>Add Trip Members</button>

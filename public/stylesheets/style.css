@@ -144,8 +144,8 @@ nav a {
   }
 
   iframe {
-    width: 400px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
   }
 
   .tripContainer img {
@@ -181,5 +181,10 @@ nav a {
     .tripContainer img {
       border-radius: 10px;
       width: 90%
+    }
+
+    iframe {
+      width: 90%;
+      height: 80%;
     }
 }

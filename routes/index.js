@@ -14,14 +14,14 @@ router.get("/sign-out", function(req,res){
    res.redirect('/');
 });
 
-router.get('/auth/google', function(req,res){
+router.post('/auth/google', function(req,res){
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
   var params = {
-    code: req.query.code,
+    code: req.body.code,
     client_id: '746466032586-fkn4lk9v4pccpa005accokik9u2m13cb.apps.googleusercontent.com',
     client_secret: google,
-    redirect_uri: 'https://plantogether.herokuapp.com/auth/google',
+    redirect_uri: req.body.redirectUri,
     grant_type: 'authorization_code'
   };
 

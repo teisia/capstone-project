@@ -62,7 +62,7 @@
            <option name='user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
           </select>
         </fieldset>
-         <button class='btn button' ng-click='showmeAM=false'>Add Members</button>
+         <button class='btn button' ng-click='showmeAM=false'>Add Member</button>
       </form>
     </div>
   </div>
@@ -155,7 +155,7 @@
          <fieldset class='form-group'>
            <label for='user_id'>Assign Task</label>
            <select class='form-control'>
-            <option diasbled>Select User</option>
+            <option disabled>Select User</option>
             <option ng-repeat='user in user_collection' ng-model='task.user_id' value='{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
            </select>
          </fieldset>

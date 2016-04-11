@@ -43,6 +43,7 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
       if (result){
         console.log("user returned **********");
         console.log(result)
+        res.cookie('user', result.id);
         return res.status(409).send({message: 'There is already a google account that belongs to you'});
       }
       var token = req.header('Authorization').split(' ')[1];

@@ -7,6 +7,10 @@ h1 {
   font-family: 'Lato', sans-serif;
 }
 
+em {
+  color: gray;
+}
+
 .title {
   font-weight: bolder;
   font-size: 5rem;
@@ -30,8 +34,12 @@ h1 {
 }
 
 nav {
-  background-color: #E6F3F8;
+  background-color: white;
   padding: .5rem;
+}
+
+nav a {
+  color: black;
 }
 
 .userPic {
@@ -63,6 +71,10 @@ nav {
 
 .buttonSm {
   background-color: #98FB98
+}
+
+.tripContainer img {
+  border-radius: 10px;
 }
 
 .taskEdit {
@@ -124,6 +136,11 @@ nav {
     width: 400px;
     height: 300px;
   }
+
+  .tripContainer img {
+    border-radius: 10px;
+    width: 90%
+  }
 }
 
 @media only screen
@@ -148,5 +165,10 @@ nav {
       width: auto;
       border-radius: 30px;
       margin-left: 1.5rem;
+    }
+
+    .tripContainer img {
+      border-radius: 10px;
+      width: 90%
     }
 }

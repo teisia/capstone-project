@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/#/dashboard">Plan Together</a>
+      <a class="navbar-brand" href="/#/dashboard">PLAN TOGETHER</a>
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
@@ -14,6 +14,7 @@
 <div class='tripContainer'>
   <div class='well'>
     <div class='text-center'>
+      <img src="{{singleTrip.image}}">
       <h1>{{singleTrip.title}}</h1>
       <h3>{{singleTrip.description}}</h2>
       <p>Start Date: {{singleTrip.trip_start}}</p>
@@ -49,7 +50,7 @@
     </div>
   </div>
   <div class='well'>
-    <h1>trip details</h1>
+    <h2>TRIP DETAILS</h2>
     <div ng-repeat='tripd in tripd_collection'>
       <div> {{tripd.detail}} <a href='{{tripd.url}}' target='_blank'>link</a> <span class='taskEdit' ng-click='toggleEditTripDForm()'>edit</span></div>
       <div class='form' ng-show='showmeETD'>
@@ -90,7 +91,7 @@
     </div>
   </div>
     <div class='well col-sm-5'>
-      <h1>tasks</h1>
+      <h2>TASKS</h2>
       <div ng-repeat='task in task_collection'>
         <fieldset class='form-group'>
           <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
@@ -146,10 +147,10 @@
     </div>
   </div>
   <div class='well col-sm-6'>
-    <h1>message board</h1>
+    <h2>MESSAGE BOARD</h2>
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
-        <div class='messages'> {{message.message}} {{message.created_at}} <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
+        <div class='messages'> {{message.message}} <em>{{message.created_at}}</em> <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span></div>
         <div class='msgEdit' ng-show='showmeEM'>
          <form class='meForm' ng-submit='editMessage(message)'>
             <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>

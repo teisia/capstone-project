@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var moment = require('moment');
 
 function trips() {
   return knex('trip');

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var moment = require('moment');
 
 function trips() {
   return knex('trip');
@@ -25,6 +26,7 @@ router.post("/:id/messages", function(req,res){
     obj.user_id= req.body.user_id,
     obj.trip_id= req.params.id,
     obj.message= req.body.message,
+    obj.created_at= moment().calendar();
     messages().insert(obj).then(function(){
       res.json({success: true});
   })

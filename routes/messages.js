@@ -12,7 +12,7 @@ function messages() {
 };
 
 function User() {
-  return knex('user');
+  return knex('userList');
 };
 
 router.get("/:id/messages", function(req,res){

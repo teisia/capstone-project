@@ -38,7 +38,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService, TripDService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', 'MemberService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService, TripDService, MemberService){
 
     $scope.toggleAddMembersForm = function () {
       $scope.showmeAM = !$scope.showmeAM;
@@ -174,5 +174,12 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
         $scope.tripd_collection = payload.data;
       })
       }
+
+    $scope.members = {};
+    $scope.postMembers = function() {
+    MemberService.postMembers(the_id, $scope.members).then(function() {
+      console.log("posted members");
+    })
+    }
 
 }])

@@ -54,12 +54,12 @@
      </form>
     </div>
     <div class='form' ng-show='showmeAM'>
-      <form>
-        <input type='hidden' value='{{tripInfo.id}}'>
+      <form ng-submit='postMembers()'>
+        <input type='hidden' name='trip_id' value='{{tripInfo.id}}'>
         <fieldset class='form-group'>
           <label for='user_id'>Members</label>
-          <select multiple class='form-control'>
-           <option ng-model='trip_user.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+          <select ng-model='members' class='form-control'>
+           <option name='user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
           </select>
         </fieldset>
          <button class='btn button' ng-click='showmeAM=false'>Add Members</button>
@@ -128,7 +128,7 @@
            <fieldset class='form-group'>
              <label for='user_id'>Assign Task</label>
              <select class='form-control'>
-              <option ng-model='task.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
+              <option name='user_id' ng-model='task.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
              </select>
            </fieldset>
              <br>

@@ -14,6 +14,15 @@ app.factory("UserService", function($http) {
   }
 })
 
+app.factory("MemberService", function($http) {
+  return {
+    postMembers: function(trip_id, members_object) {
+      console.log(members_object);
+      return $http.post("/trips/"+trip_id+"/members", {user_id: members_object});
+    }
+  }
+})
+
 app.factory("TripService", function($http){
 
 return {

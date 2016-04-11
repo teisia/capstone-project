@@ -66,5 +66,15 @@ router.post("/delete", function(req,res) {
   })
 });
 
+router.post("/:id/members", function(req, res) {
+  var obj = {}
+  console.log(req.body);
+  obj.trip_id = req.params.id,
+  obj.user_id = req.body.user_id,
+  tripUser().insert(obj).then(function(){
+    res.json({success: true});
+  })
+})
+
 
 module.exports = router;

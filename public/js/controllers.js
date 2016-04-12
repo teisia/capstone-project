@@ -29,7 +29,7 @@ app.controller('LogOutCtrl', function($scope, $auth, SignOutService) {
   }
 });
 
-app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
+app.controller('MainController', ['$scope', '$http', '$routeParams', '$location', '$route', '$window', 'TripService', 'UserService', function($scope, $http, $routeParams, $location, $route, $window, TripService, UserService){
 
      $scope.toggleNewTripForm = function() {
        $scope.showme = !$scope.showme;
@@ -49,7 +49,8 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
     $scope.trip = {};
     $scope.postTrip = function() {
-    TripService.newTrip($scope.trip).then(function() {
+    TripService.newTrip($scope.trip).then(function(result) {
+      $route.reload();
       console.log("posted trip");
     })
     }
@@ -62,7 +63,7 @@ app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripServic
 
 }])
 
-app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', 'MemberService', function($scope, $http, $routeParams, $location, TripService, UserService, TaskService, MessageService, TripDService, MemberService){
+app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$location', '$route', '$window', 'TripService', 'UserService', 'TaskService', 'MessageService', 'TripDService', 'MemberService', function($scope, $http, $routeParams, $location, $route, $window, TripService, UserService, TaskService, MessageService, TripDService, MemberService){
 
     $scope.toggleAddMembersForm = function () {
       $scope.showmeAM = !$scope.showmeAM;
@@ -131,6 +132,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     $scope.task = {};
     $scope.postTask = function() {
     TaskService.newTask(the_id, $scope.task).then(function() {
+      $route.reload();
       console.log("posted task");
     })
     }
@@ -158,6 +160,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     $scope.message = {};
     $scope.postMessage = function() {
     MessageService.newMessage(the_id, $scope.message).then(function() {
+      $route.reload();
       console.log("posted message");
     })
     }
@@ -185,6 +188,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     $scope.tripD = {};
     $scope.postTripD = function() {
     TripDService.newTripD(the_id, $scope.tripD).then(function() {
+      $route.reload();
       console.log("posted trip detail");
     })
     }
@@ -206,6 +210,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
     $scope.members = {};
     $scope.postMembers = function() {
     MemberService.postMembers(the_id, $scope.members).then(function() {
+      $route.reload();
       console.log("posted members");
     })
     }

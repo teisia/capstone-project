@@ -59,8 +59,8 @@ router.post("/", function(req,res){
   obj.trip_end= req.body.trip_end
   obj.admin_id= req.cookies.user,
   obj.image = req.body.image,
-  trips().insert(obj).then(function(){
-    res.json({success: true});
+  trips().insert(obj).returning('*').then(function(result){
+    res.json(result);
   })
 });
 

@@ -4,6 +4,11 @@ body {
   color: black;
 }
 
+.checked {
+  color: gray;
+  text-decoration: line-through;
+}
+
 .link {
   margin-left: .5rem;
 }

@@ -29,7 +29,6 @@ app.controller('LogOutCtrl', function($scope, $auth, SignOutService) {
   }
 });
 
-
 app.controller('MainController', ['$scope', '$http', '$routeParams', 'TripService', 'UserService', function($scope, $http, $routeParams, TripService, UserService){
 
      $scope.toggleNewTripForm = function() {

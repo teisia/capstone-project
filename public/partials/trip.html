@@ -113,9 +113,9 @@
   </div>
     <div class='well col-sm-5'>
       <h2>TASKS</h2>
-      <div ng-repeat='task in task_collection'>
+      <div ng-repeat='task in task_collection' ng-class="{'checked': task.isChecked}">
         <fieldset class='form-group'>
-          <input type='checkbox'> {{task.description}} {{taskcreator}}<span class='taskEdit' ng-click='toggleEditTaskForm()'> edit</span></input>
+          <input ng-model='task.isChecked' type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'> edit</span></input>
         </fieldset>
         <div class='form' ng-show='showmeETask'>
          <form ng-submit='editTask(task)'>
@@ -123,16 +123,6 @@
            <fieldset class='form-group'>
              <label for='description'>Description</label>
              <input class='form-control' name='description' type='text' ng-model='task.description'>
-           </fieldset>
-           <fieldset class='form-group'>
-             <label for='due_date'>Due Date</label>
-             <input class='form-control' name='due_date' type='text' ng-model='task.due_date'>
-           </fieldset>
-           <fieldset class='form-group'>
-             <label for='user_id'>Assign Task</label>
-             <select class='form-control'>
-              <option name='user_id' ng-model='task.user_id' value='{{user.id}}' ng-repeat='user in user_collection'>{{user.first_name}} {{user.last_name}}</option>
-             </select>
            </fieldset>
              <br>
              <button class='btn button' ng-click='showmeETask=false'>Edit Task</button>
@@ -150,17 +140,6 @@
          <fieldset class='form-group'>
            <label for='description'>Description</label>
            <input class='form-control' name='description' type='text' ng-model='task.description' placeholder='Task Description'>
-         </fieldset>
-         <fieldset class='form-group'>
-           <label for='due_date'>Due Date</label>
-           <input class='form-control' name='due_date' type='text' ng-model='task.due_date' placeholder='Task Due Date'>
-         </fieldset>
-         <fieldset class='form-group'>
-           <label for='user_id'>Assign Task</label>
-           <select class='form-control'>
-            <option disabled>Select User</option>
-            <option ng-repeat='user in user_collection' ng-model='task.user_id' value='{{user.id}}'>{{user.first_name}} {{user.last_name}}</option>
-           </select>
          </fieldset>
            <button class='btn button' ng-click='showmeNT=false'>Add Task</button>
        </form>

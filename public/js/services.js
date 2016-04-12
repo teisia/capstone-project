@@ -90,7 +90,7 @@ return {
   getTasks: function(trip_id) {
     return $http.get("/trips/"+trip_id+"/tasks");
   },
-  
+
   newTask: function(trip_id, task_object) {
     return $http.post("/trips/"+trip_id+"/tasks", task_object);
   },

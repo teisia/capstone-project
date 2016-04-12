@@ -112,7 +112,7 @@ return {
   getMessages: function(trip_id) {
     return $http.get("/trips/"+trip_id+"/messages");
   },
-
+  
   getMessenger: function(trip_id) {
     return $http.get("/trips/"+trip_id+"/messages/creators");
   },

@@ -157,17 +157,17 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       })
       }
 
-    MessageService.getMessages(the_id).then(function(payload){
-     $scope.message_collection = payload.data.payload;
-    }, function(error){
-      console.log("an error occurred");
-    })
+      MessageService.getMessages(the_id).then(function(payload){
+      $scope.message_collection = payload.data.payload;
+     }, function(error){
+       console.log("an error occurred");
+     })
 
-    MessageService.getMessenger(the_id).then(function(payload){
-     $scope.messenger= payload.data[0].first_name + ' ' + payload.data[0].last_name;;
-    }, function(error){
-      console.log("an error occurred");
-    })
+     MessageService.getMessenger(the_id).then(function(payload){
+      $scope.messenger= payload.data[0].first_name + ' ' + payload.data[0].last_name;;
+     }, function(error){
+       console.log("an error occurred");
+     })
 
     $scope.message = {};
     $scope.postMessage = function() {

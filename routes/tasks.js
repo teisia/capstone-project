@@ -31,12 +31,6 @@ router.post("/:id/tasks", function(req,res){
   })
 });
 
-router.get("/:id/tasks/:task_id", function(req,res){
-   tasks().where("id", req.params.task_id).then(function(payload) {
-     res.json(payload);
- })
-});
-
 router.post("/:id/tasks/:task_id/edit", function(req,res) {
   tasks().where("id", req.params.task_id).update(req.body).then(function(result){
     res.redirect("/" +req.params.id+ "/tasks");

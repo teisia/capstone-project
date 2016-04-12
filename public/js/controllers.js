@@ -129,16 +129,6 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       console.log("an error occurred");
     })
 
-    TaskService.getTask(the_id).then(function(payload){
-     $scope.singleTask = payload.data[0];
-     $scope.admin_id = $scope.singleTask.admin_id;
-     UserService.getUser($scope.admin_id).then(function(payload2) {
-       $scope.taskcreator = payload2.data[0].first_name + ' ' + payload2.data[0].last_name;
-     })
-    }, function(error){
-      console.log("an error occurred");
-    })
-
     $scope.task = {};
     $scope.postTask = function() {
     TaskService.newTask(the_id, $scope.task).then(function() {

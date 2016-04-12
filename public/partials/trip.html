@@ -16,14 +16,12 @@
       <img src="{{singleTrip.image}}">
       <h1>{{singleTrip.title}}</h1>
       <h3>{{singleTrip.description}}</h2>
-      <p>Start Date: {{singleTrip.trip_start}}</p>
-      <p>End Date: {{singleTrip.trip_end}}</p>
-      <h4>Trip Organizer</h4>
-        <p>{{organizer}}</p>
-      <h4>Trip Members</h4>
-      <div ng-repeat='member in member_collection'>
-        <p>{{member.first_name}} {{member.last_name}}</p>
+      <p>When: {{singleTrip.trip_start}} - {{singleTrip.trip_end}}</p>
+      <div>
+        <p>Organizer: {{organizer}}</p>
       </div>
+      <p><strong>Trip Members:</strong></p>
+      <div ng-repeat='member in member_collection'>{{member.first_name}} {{member.last_name}}</div>
       <br>
       <button class='btn buttonSm' ng-click='toggleEditTripForm()'>Edit Trip</button>
       <button class='btn buttonSm btnAM' ng-click='toggleAddMembersForm()'>Add Trip Members</button>

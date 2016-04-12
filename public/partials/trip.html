@@ -150,10 +150,9 @@
     <h2>MESSAGE BOARD</h2>
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
-        <div class='messages'> {{message.message}} <em>{{message.created_at}}</em></div>
-        <p>{{messenger}}</p>
-        <div class='msgEditLink'>
-          <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span>
+        <div class='messages'> {{message.message}} <strong> -{{messenger}}</strong>
+          <br>
+          <em>{{message.created_at}}</em> <span class='taskEdit' ng-click='toggleEditMsgForm()'> edit</span>
         </div>
         <div class='msgEdit' ng-show='showmeEM'>
          <form class='meForm' ng-submit='editMessage(message)'>

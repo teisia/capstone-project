@@ -22,8 +22,10 @@ app.controller('LoginCtrl', function($scope, $auth, $location) {
 });
 
 app.controller('LogOutCtrl', function($scope, $auth, SignOutService) {
+  $scope.logOut = function() {
   SignOutService.signout = function() {
-  alert('You have been logged out.');
+  $location.path('/')
+  }
   }
 });
 

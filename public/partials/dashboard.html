@@ -5,26 +5,32 @@
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/#/sign-out">Sign Out</a></li>
+        <li><a href="/#/" ng-click=logOut()>Sign Out</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <div class='dashboard'>
   <div class='well col-sm-4'>
-    <h2 class='text-center'>MY TRIPS</h2>
-    <div class='col-sm-6'>
-      <h4>CREATED TRIPS</h4>
-      <div ng-repeat='trip in trip_collection'>
-        <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
-      </div>
-    </div>
-    <div class='col-sm-6'>
-      <h4>INVITED TRIPS</h4>
-      <div ng-repeat='trip in invited_collection'>
-        <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
-      </div>
-    </div>
+    <h2 class='tripDashTitle'>MY TRIPS</h2>
+    <table>
+      <tr>
+        <th><h4>CREATED TRIPS</h4></th>
+        <th><h4>INVITED TRIPS</h4></th>
+      </tr>
+      <tr>
+        <td>
+          <div ng-repeat='trip in trip_collection'>
+            <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
+          </div>
+        </td>
+        <td>
+          <div ng-repeat='trip in invited_collection'>
+            <h4><a href='/#/trips/{{trip.id}}'>{{trip.title}}</a></h4>
+          </div>
+        </td>
+      </tr>
+    </table>
     <br>
     <button class='newTripBtn btn buttonSm' ng-click='toggleNewTripForm()'><i class='fa fa-plus'></i> Create Trip</button>
     <div class='form' ng-show='showme'>
@@ -49,7 +55,7 @@
     </div>
   </div>
   <div class='well col-sm-7'>
-    <h2 class='text-center'>MY CALENDAR</h2>
+    <h2>MY CALENDAR</h2>
     <iframe src="https://calendar.google.com/calendar/embed?src=u1894m2sjqk4mmb2lmo2b7ohcg%40group.calendar.google.com&ctz=America/Denver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NDQ0ZXR0MDcyczh1aWRkOWc0MjMxcDgzMWcgdTE4OTRtMnNqcWs0bW1iMmxtbzJiN29oY2dAZw&amp;tmsrc=u1894m2sjqk4mmb2lmo2b7ohcg%40group.calendar.google.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
   </div>

@@ -55,6 +55,15 @@ nav a {
   margin-top: .5rem;
 }
 
+th {
+ padding-left: 1rem;
+ padding-right: 4rem;
+}
+
+td {
+  padding-left: 1rem;
+}
+
 .well {
   border-radius: 1rem;
   margin: 3rem;
@@ -77,6 +86,14 @@ nav a {
 
 .buttonSm {
   background-color: #98FB98
+}
+
+.newTripBtn {
+  margin: 1rem;
+}
+
+.tripDashTitle {
+  margin-left: 1.5rem;
 }
 
 .btnAM {

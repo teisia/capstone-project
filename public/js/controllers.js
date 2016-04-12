@@ -103,9 +103,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       $scope.singleTrip = payload.data.payload[0];
       $scope.admin_id = $scope.singleTrip.admin_id;
       UserService.getUser($scope.admin_id).then(function(payload2) {
-        console.log(payload2)
-        console.log($scope.admin_id);;
-        $scope.organizer = payload2.data[0].first_name + ' ' + payload2.data[0].last_name ;
+        $scope.organizer = payload2.data[0].first_name + ' ' + payload2.data[0].last_name;
       })
     }, function(error){
       console.log("an error occurred");
@@ -127,6 +125,16 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
 
     TaskService.getTasks(the_id).then(function(payload){
      $scope.task_collection = payload.data;
+    }, function(error){
+      console.log("an error occurred");
+    })
+
+    TaskService.getTask(the_id).then(function(payload){
+     $scope.singleTask = payload.data[0];
+     $scope.admin_id = $scope.singleTask.admin_id;
+     UserService.getUser($scope.admin_id).then(function(payload2) {
+       $scope.taskcreator = payload2.data[0].first_name + ' ' + payload2.data[0].last_name;
+     })
     }, function(error){
       console.log("an error occurred");
     })
@@ -153,7 +161,7 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       }
 
     MessageService.getMessages(the_id).then(function(payload){
-     $scope.message_collection = payload.data;
+     $scope.message_collection = payload.data.payload;
     }, function(error){
       console.log("an error occurred");
     })

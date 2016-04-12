@@ -91,6 +91,10 @@ return {
     return $http.get("/trips/"+trip_id+"/tasks");
   },
 
+  getTask: function(trip_id, task_id, task) {
+    return $http.get("/trips/"+trip_id+"/tasks/"+task_id, task);
+  },
+
   newTask: function(trip_id, task_object) {
     return $http.post("/trips/"+trip_id+"/tasks", task_object);
   },

@@ -11,7 +11,6 @@ function User() {
 
 router.get("/sign-out", function(req,res){
  res.clearCookie('user');
- alert('You have been logged out');
 });
 
 router.post('/auth/google', function(req,res){

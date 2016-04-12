@@ -27,7 +27,7 @@ router.get("/:id/tripD", function(req,res){
 router.post("/:id/tripD", function(req,res){
     var obj = {}
     obj.detail= req.body.detail,
-    obj.user_id= req.body.user_id,
+    obj.user_id= req.cookies.user,
     obj.trip_id= req.params.id,
     obj.url= req.body.url,
     tripD().insert(obj).then(function(){

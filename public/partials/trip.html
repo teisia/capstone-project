@@ -115,7 +115,7 @@
       <h2>TASKS</h2>
       <div ng-repeat='task in task_collection'>
         <fieldset class='form-group'>
-          <input type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'>edit</span></input>
+          <input type='checkbox'> {{task.description}} {{taskcreator}}<span class='taskEdit' ng-click='toggleEditTaskForm()'> edit</span></input>
         </fieldset>
         <div class='form' ng-show='showmeETask'>
          <form ng-submit='editTask(task)'>

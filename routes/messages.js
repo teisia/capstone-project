@@ -17,13 +17,15 @@ function User() {
 
 router.get("/:id/messages", function(req,res){
   messages().select().where({trip_id: +req.params.id}).then(function(payload) {
-    res.json(payload);
+    User().select().then(function(payload2) {
+    res.json({payload: payload, payload2: payload2});
+  })
  })
 });
 
 router.post("/:id/messages", function(req,res){
     var obj = {}
-    obj.user_id= req.body.user_id,
+    obj.user_id= req.cookies.user,
     obj.trip_id= req.params.id,
     obj.message= req.body.message,
     obj.created_at= moment().calendar();

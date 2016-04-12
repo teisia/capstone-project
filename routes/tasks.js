@@ -24,11 +24,17 @@ router.post("/:id/tasks", function(req,res){
     var obj = {}
     obj.description= req.body.description,
     obj.due_date= req.body.due_date,
-    obj.user_id= req.body.user_id,
+    obj.admin_id= req.cookies.user,
     obj.trip_id= req.params.id,
     tasks().insert(obj).then(function(){
       res.json({success: true});
   })
+});
+
+router.get("/:id/tasks/:task_id", function(req,res){
+   tasks().where("id", req.params.task_id).then(function(payload) {
+     res.json(payload);
+ })
 });
 
 router.post("/:id/tasks/:task_id/edit", function(req,res) {

@@ -129,6 +129,12 @@ app.controller('SingleTripController', ['$scope', '$http', '$routeParams', '$loc
       console.log("an error occurred");
     })
 
+    $scope.checkTask = function(task) {
+      TaskService.editTask(the_id, task).then(function(payload) {
+        $scope.task_collection = payload.data;
+      })
+    }
+
     $scope.task = {};
     $scope.postTask = function() {
     TaskService.newTask(the_id, $scope.task).then(function() {

@@ -28,6 +28,7 @@ router.post("/:id/tasks", function(req,res){
     obj.due_date= req.body.due_date,
     obj.admin_id= req.cookies.user,
     obj.trip_id= req.params.id,
+    obj.completed = req.body.completed,
     tasks().insert(obj).then(function(){
       res.json({success: true});
   })

@@ -113,9 +113,9 @@
   </div>
     <div class='well col-sm-5'>
       <h2>TASKS</h2>
-      <div ng-repeat='task in task_collection' ng-class="{'checked': task.isChecked}">
+      <div ng-repeat='task in task_collection' ng-class="{'checked': task.completed}">
         <fieldset class='form-group'>
-          <input ng-model='task.isChecked' type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'> edit</span></input>
+          <input ng-change='checkTask(task)' ng-model='task.completed' name='completed' type='checkbox'> {{task.description}} <span class='taskEdit' ng-click='toggleEditTaskForm()'> edit</span></input>
         </fieldset>
         <div class='form' ng-show='showmeETask'>
          <form ng-submit='editTask(task)'>
@@ -151,6 +151,7 @@
     <div id='messageBoardContainer'>
       <div ng-repeat='message in message_collection'>
         <div class='messages'> {{message.message}} <em>{{message.created_at}}</em></div>
+        <p>{{messenger}}</p>
         <div class='msgEditLink'>
           <span class='taskEdit' ng-click='toggleEditMsgForm()'>edit</span>
         </div>

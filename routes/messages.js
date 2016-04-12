@@ -23,6 +23,18 @@ router.get("/:id/messages", function(req,res){
  })
 });
 
+router.get("/:id/messages/creators", function(req, res) {
+  messages().select().where({trip_id: req.params.id}).then(function(payload){
+   user_collection = [];
+   for (var i = 0; i < payload.length; i++) {
+     user_collection.push(parseInt(payload[i].user_id));
+   }
+   User().whereIn('id', user_collection).then(function(new_stuff){
+     res.json(new_stuff);
+   })
+  })
+})
+
 router.post("/:id/messages", function(req,res){
     var obj = {}
     obj.user_id= req.cookies.user,

@@ -16,7 +16,7 @@ function User() {
 
 router.get("/:id/tasks", function(req,res){
    tasks().select().where({trip_id: +req.params.id}).then(function(payload) {
-     tasks().where({admin_id: req.cookies.user}).then(function(payload2) {
+     tasks().select().then(function(payload2) {
      res.json(payload2);
   })
  })

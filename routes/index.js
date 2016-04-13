@@ -62,7 +62,6 @@ request.get({ url: peopleApiUrl, headers: headers, json: true}, function(err, re
         user.save(function(){
           res.cookie('user', user.id)
           res.send({token: user});
-          res.redirect('/#/dashboard')
         });
       });
     });

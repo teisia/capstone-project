@@ -16,24 +16,20 @@ function User() {
 };
 
 router.get("/:id/messages", function(req,res){
-  messages().select().where({trip_id: +req.params.id}).then(function(payload) {
-    User().select().then(function(payload2) {
-    res.json({payload: payload, payload2: payload2});
+  messages().where({trip_id: +req.params.id}).then(function(msgs) {
+    Promise.all(msgs.map(function(m) {
+      return User().where('id', m.user_id).first().then(function (user) {
+        var messenger = user.first_name + ' ' + user.last_name;
+        m.messenger = messenger;
+        return m;
+      })
+    })).then(function(msgss) {
+      console.log("*****MESSAGES*****");
+      console.log(msgs);
+    res.json({message: msgss});
   })
  })
 });
-
-router.get("/:id/messages/creators", function(req, res) {
-  messages().select().where({trip_id: req.params.id}).then(function(payload){
-   user_collection = [];
-   for (var i = 0; i < payload.length; i++) {
-     user_collection.push(parseInt(payload[i].user_id));
-   }
-   User().whereIn('id', user_collection).then(function(new_stuff){
-     res.json(new_stuff);
-   })
-  })
-})
 
 router.post("/:id/messages", function(req,res){
     var obj = {}

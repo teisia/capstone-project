@@ -1,10 +1,12 @@
 # Plan Together
 
-Plan together is a group trip planning app that enables people to collaborate and keep everything needed for planning trip in one centralized place.
+Plan together is a group trip planning app that enables people to collaborate and keep everything needed for planning a trip in one centralized place.
+
+plantogether.co
 
 ### Stack
-* HTML
-* CSS
+* HTML5
+* CSS3
 * Bootstrap
 * JavaScript
 * AngularJS
@@ -12,4 +14,4 @@ Plan together is a group trip planning app that enables people to collaborate an
 * Node.js
 * PostgreSQL
 * Knex
-* oAuth
+* OAuth 2.0
